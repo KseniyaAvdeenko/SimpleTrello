@@ -1,0 +1,222 @@
+@import "Common.module"
+
+.auth
+  &__modal
+    position: absolute
+    top: 0
+    left: 0
+    @include dFlex(row, center, center)
+    @extend .widthFull
+    @extend .heightFull
+    @extend .containerPaddings
+
+  &__container
+    @extend .widthFull
+    height: 53%
+    @extend .rounded_20
+    @include dFlex(row, flex-start, flex-start)
+
+
+.authModalLightMode
+  backdrop-filter: blur(.3rem)
+  background: #ffffff00
+
+.authModalDarkMode
+  backdrop-filter: blur(3rem)
+  background: rgba(30, 30, 30, 0.05)
+
+.authContainerLightMode
+  box-shadow: 0 0 1rem 0 $darkShadow
+  color: $bgColor
+  border: 1px solid transparent
+  background-color: $textColor
+
+.authContainerDarkMode
+  box-shadow: 0 0 10px 10px $lightShadow
+  color: $textColor
+  @include borders($primaryColor)
+  background-color: $bgColor
+
+.authCardAndForm
+  background-color: transparent
+  @include dFlex(column, center, center)
+  @extend .widthFull
+  @extend .heightFull
+  flex-basis: 50%
+  transition: display 2s ease-in-out
+
+.signInCard
+  @extend .authCardAndForm
+  border-left: .1rem solid $accentColor
+
+.cards
+  &__heading
+    font-size: $h3Size
+    color: inherit
+    text-align: center
+    @extend .mb_20
+
+  &__button
+    @extend .buttonText
+    @extend .commonButton
+    padding: 1.5rem 4rem
+    color: $textColor
+    @include borders($primaryColor)
+    background-color: $primaryColor
+    @extend .rounded_30
+
+    &:hover
+      @extend .commonButtonHover
+
+  &__form
+    @include dFlex(column, center, center)
+    width: 65%
+
+  &__inputContainer
+    @include dFlex(column, flex-start, flex-start)
+    @extend .widthFull
+    margin-bottom: 1rem
+    @extend .positionRel
+
+  &__input
+    @extend .commonInputText
+    padding: 1.5rem
+
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill
+      background-color: transparent !important
+
+
+.signInForm
+  @extend .authCardAndForm
+
+.signUpCard
+  @extend .authCardAndForm
+  border-right: .1rem solid $accentColor
+
+.signUpForm
+  @extend .authCardAndForm
+
+.errors
+  color: darkred
+  @extend .mb_20
+
+.passwordWatcher
+  position: absolute
+  top: 30%
+  right: 1.5rem
+
+.passwordWatcher > img
+  cursor: pointer
+
+
+@media all and (max-device-width: 1920px)
+  .auth
+    &__container
+      height: 65%
+
+@media all and (max-device-width: 1540px) and (max-device-height: 730px)
+  .auth
+    &__container
+      height: 75%
+  .cards
+    &__heading
+      font-size: $h4Size
+
+@media all and (max-device-width: 1370px) and (max-device-height: 770px)
+  .cards
+    &__form
+      width: 90%
+
+@media all and (max-device-width: 1280px) and (max-device-height: 880px)
+  .cards
+    &__form
+      width: 90%
+
+
+@media all and (max-device-width: 1024px) and (orientation: portrait)
+  .cards
+    &__form
+      width: 90%
+  .auth
+    &__container
+      height: 45%
+
+@media all and (max-device-width: 768px) and (orientation: portrait)
+  .cards
+    &__heading
+      font-size: $h5Size
+
+@media all and (max-device-width: 540px) and (max-device-height: 720px)
+  .auth
+    &__modal
+      padding-right: 30px
+      padding-left: 30px
+
+    &__container
+      height: 85%
+      flex-direction: column
+
+  .signInCard
+    border-left: none
+    border-top: 1px solid $accentColor
+
+  .signInCard,
+  .signUpCard,
+  .signInForm,
+  .signUpForm
+    padding: 20px
+
+  .signUpCard
+    border-bottom: 1px solid $accentColor
+    border-right: none
+
+@media all and (max-device-width: 430px)
+  .auth
+    &__modal
+      padding-right: 30px
+      padding-left: 30px
+
+    &__container
+      height: 60%
+      flex-direction: column
+
+  .cards
+    &__button
+      padding: 10px 30px
+
+  .signInCard
+    border-left: none
+    border-top: 1px solid $accentColor
+
+  .signInCard,
+  .signUpCard,
+  .signInForm,
+  .signUpForm
+    padding: 2rem
+
+  .signUpCard
+    border-bottom: 1px solid $accentColor
+    border-right: none
+
+
+@media all and (max-device-width: 390px)
+  .auth
+    &__container
+      height: 65%
+
+@media all and (max-device-width: 375px)
+  .auth
+    &__container
+      height: 85%
+
+  .cards
+    &__input
+      padding: 1rem
+
+    &__button
+      margin-top: 1rem
+
+    &__heading
+      font-size: 1.6rem

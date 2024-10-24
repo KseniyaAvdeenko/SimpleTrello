@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+.h1 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 6.1rem;
+  font-weight: 800;
+}
+
+.h2 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 4.9rem;
+  font-weight: 600;
+}
+
+.h3 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 3.9rem;
+  font-weight: 600;
+}
+
+.textAlign {
+  text-align: center;
+}
+
+.blockIHidden {
+  display: none !important;
+}
+
+.mb_10, .newBoardForm .inputContainer {
+  margin-bottom: 1rem;
+}
+
+.mb_20 {
+  margin-bottom: 2rem;
+}
+
+.mb_30 {
+  margin-bottom: 3rem;
+}
+
+.mr_10 {
+  margin-right: 1rem;
+}
+
+.mr_20 {
+  margin-right: 2rem;
+}
+
+.ml_20 {
+  margin-left: 2rem;
+}
+
+.mt_10, .newBoardForm__button {
+  margin-top: 1rem;
+}
+
+.containerPaddings, .profile {
+  padding-left: 14%;
+  padding-right: 14%;
+}
+
+.p_20, .commonFormContainer, .newBoardForm, .newBoardFormContainer {
+  padding: 2rem;
+}
+
+.p_30 {
+  padding: 3rem;
+}
+
+.widthFull, .newBoardForm .inputContainer__items, .newBoardForm, .newBoardButton, .profileContainer, .profile, .commonInputContainer, .newBoardForm .inputContainer__colors, .commonInputText, .newBoardForm .inputContainer > input[type=text] {
+  width: 100%;
+}
+
+.heightFull, .newBoardForm, .newBoardButton, .profileContainer {
+  height: 100%;
+}
+
+.rounded_20, .commonFormContainer, .newBoardForm, .newBoardFormContainer, .commonButton, .boardBtn, .userBoardLink, .transparentToGreenBtn, .newBoardButton, .commonInputText, .newBoardForm .inputContainer > input[type=text] {
+  border-radius: 2rem;
+}
+
+.rounded_30, .newBoardForm__button {
+  border-radius: 3rem;
+}
+
+.positionRel, .newBoardBtnContainer {
+  position: relative;
+}
+
+.transition, .newBoardForm__button, .commonButton, .boardBtn, .userBoardLink, .transparentToGreenBtn, .newBoardButton, .commonInputText, .newBoardForm .inputContainer > input[type=text] {
+  transition: all 0.5s ease-in;
+}
+
+.commonInputText, .newBoardForm .inputContainer > input[type=text] {
+  padding: 1rem;
+  font-size: 1.6px;
+  border: 0.1rem solid #8FBC8F;
+}
+.commonInputText::placeholder, .newBoardForm .inputContainer > input[type=text]::placeholder {
+  color: rgba(143, 188, 143, 0.5);
+}
+.commonInputText:focus, .newBoardForm .inputContainer > input[type=text]:focus, .commonInputText:active, .newBoardForm .inputContainer > input[type=text]:active {
+  outline: none;
+  border-color: #2E8B57;
+}
+
+.buttonText, .newBoardButton > span:first-of-type, .boardBtn, .userBoardLink, .transparentToGreenBtn, .newBoardButton {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.commonButton, .boardBtn, .userBoardLink, .transparentToGreenBtn, .newBoardButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.commonButtonHover, .newBoardForm__button__button:hover {
+  outline: none;
+  border: 0.1rem solid #2E8B57;
+  background-color: #2E8B57;
+}
+
+.transparentToGreenBtn, .newBoardButton {
+  border: 0.1rem solid #8FBC8F;
+  background-color: transparent;
+  color: #8FBC8F;
+  padding: 15px 40px;
+}
+.transparentToGreenBtn:hover, .newBoardButton:hover {
+  border: 0.1rem solid #345e37;
+  background: #345e37;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.commonInputContainer, .newBoardForm .inputContainer__colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.commonFormContainer, .newBoardForm, .newBoardFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.boardBtn, .userBoardLink {
+  padding: 1.5rem 4.5rem;
+  width: 23%;
+  height: 10rem;
+  margin: 0 1.2rem 2rem;
+}
+
+.newBoardBtnContainer {
+  width: 23%;
+  height: 10rem;
+  margin: 0 1.2rem 2rem;
+}
+
+.userBoardLink {
+  text-decoration: none;
+  color: #1E1E1E;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.newBoardFormContainer {
+  position: absolute;
+  top: 5rem;
+  left: -3rem;
+  backdrop-filter: blur(1rem);
+  width: 30rem;
+  height: fit-content;
+}
+
+.newBoardForm {
+  border: 0.1rem solid #8FBC8F;
+}
+.newBoardForm .inputContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.newBoardForm .inputContainer__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.newBoardForm .inputContainer__colors {
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.newBoardForm__button {
+  font-weight: 500;
+  color: #FFFFFF;
+  font-size: 1.6px;
+  padding: 1rem 3rem;
+  border: 0.1rem solid transparent;
+  background-color: #345e37;
+}
+.colors__label {
+  border-radius: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+.colors__label > input[type=radio] {
+  display: none;
+}
+
+@media all and (max-device-width: 1280px) and (max-device-height: 880px) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 25%;
+    height: 8.5rem;
+  }
+}
+@media all and (max-device-width: 1024px) and (max-device-height: 770px) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 30%;
+  }
+}
+@media all and (max-device-width: 1024px) and (max-device-height: 600px) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 33%;
+  }
+}
+@media all and (max-device-width: 1024px) and (orientation: portrait) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 33%;
+  }
+}
+@media all and (max-device-width: 768px) and (orientation: portrait) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 43%;
+  }
+}
+@media all and (max-device-width: 540px) and (max-device-height: 720px) {
+  .profile {
+    padding: 4rem 3rem;
+  }
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 50%;
+  }
+}
+@media all and (max-device-width: 430px) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 63%;
+  }
+}
+@media all and (max-device-width: 390px) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 70%;
+  }
+}
+@media all and (max-device-width: 375px) {
+  .boardBtn, .userBoardLink,
+  .newBoardBtnContainer {
+    width: 75%;
+    height: 7.5rem;
+  }
+}
+
+/*# sourceMappingURL=Profile.module.css.map */

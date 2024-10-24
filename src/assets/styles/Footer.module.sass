@@ -1,0 +1,16 @@
+@import "Common.module"
+
+.footer
+  @include dFlex(row, center, center)
+  @extend .containerPaddings
+  padding-top: 2rem
+  padding-bottom: 2rem
+  border-top: .1rem solid $accentColor
+
+  &__link
+    @include dFlex(row, center, center)
+
+  &__text
+    color: $accentColor
+    font-size: inherit
+    @extend .ml_20

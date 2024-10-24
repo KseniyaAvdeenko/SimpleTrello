@@ -1,0 +1,137 @@
+@import "Common.module"
+
+.boardSection
+  @include dFlex(column, flex-start, flex-start)
+  @extend .containerPaddings
+  @extend .widthFull
+  overflow-x: auto
+  padding-top: 4rem
+  padding-bottom: 4rem
+
+
+.boardButton
+  color: $textColor
+  font-size: $pSize
+  font-weight: 500
+  padding: 1rem 2rem
+  background-color: $primaryColor
+  border: none
+  @extend .commonButton
+  @extend .mr_20
+
+  &:hover
+    border: none
+    outline: none
+    background-color: $hoverColor
+
+.taskList
+  &__items
+    @include dFlex(column, flex-start, flex-start)
+    width: fit-content
+
+  &__settings
+    @include dFlex(column, flex-start, center)
+
+
+  &__icon
+    cursor: pointer
+
+  &__btn
+    @extend .commonButton
+    border: none
+    font-size: $h5Size
+    color: $textColor
+    background-color: rgba(255, 255, 255, 0.15)
+    height: fit-content
+    @extend .p_20
+    margin: 0 1.2rem
+    width: 33rem
+    backdrop-filter: blur(20px)
+
+    &:hover
+      outline: none
+      border: none
+      color: $textColor
+      background-color: rgba(255, 255, 255, 0.35)
+
+  &__item
+    @extend .commonFormContainer
+    height: fit-content
+    margin: 0 1.2rem
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.20)
+    width: 330px
+    background-color: #FFFFFF
+
+  &__heading
+    font-size: $h4Size
+
+  &__button
+    @extend .boardButton
+
+
+.taskListBtnContainer
+  @extend .positionRel
+
+.taskListForm
+  position: absolute
+  z-index: 3
+  top: 0
+  left: 3%
+  @extend .commonFormContainer
+  width: 33rem
+  height: fit-content
+  background-color: $textColor
+
+  & .inputContainer
+    @extend .commonInputContainer
+
+    & > input[type='text']
+      @extend .commonInputText
+
+  &__button
+    @extend .boardButton
+
+.btnContainer
+  @extend .commonInputContainer
+  @extend .mt_10
+
+
+.task
+  &__items
+    @extend .widthFull
+
+  &__form
+    padding: 1rem
+    @extend .widthFull
+    border-radius: 1rem
+    height: fit-content
+    box-shadow: 0 0 1rem 0 $lightShadow
+    @extend .mt_10
+
+  &__item
+    padding: 1rem
+    @extend .widthFull
+    border-radius: 1rem
+    height: fit-content
+    box-shadow: 0 0 1rem 0 $lightShadow
+    @extend .mt_10
+    @include dFlex(row, space-between, center)
+    cursor: grab
+
+
+
+
+
+@media all and (max-device-width: 1024px) and (max-device-height: 600px)
+  .taskList
+    &__item,
+    &__btn
+      width: 30rem
+
+
+@media all and (max-device-width: 430px)
+  .taskList
+    &__item,
+    &__btn
+      width: 28rem
+

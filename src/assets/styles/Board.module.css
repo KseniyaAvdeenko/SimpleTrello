@@ -1,0 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+.h1 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 6.1rem;
+  font-weight: 800;
+}
+
+.h2 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 4.9rem;
+  font-weight: 600;
+}
+
+.h3 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 3.9rem;
+  font-weight: 600;
+}
+
+.textAlign {
+  text-align: center;
+}
+
+.blockIHidden {
+  display: none !important;
+}
+
+.mb_10 {
+  margin-bottom: 1rem;
+}
+
+.mb_20 {
+  margin-bottom: 2rem;
+}
+
+.mb_30 {
+  margin-bottom: 3rem;
+}
+
+.mr_10 {
+  margin-right: 1rem;
+}
+
+.mr_20, .boardButton, .taskListForm__button, .taskList__button {
+  margin-right: 2rem;
+}
+
+.ml_20 {
+  margin-left: 2rem;
+}
+
+.mt_10, .task__item, .task__form, .btnContainer {
+  margin-top: 1rem;
+}
+
+.containerPaddings, .boardSection {
+  padding-left: 14%;
+  padding-right: 14%;
+}
+
+.p_20, .taskList__btn, .commonFormContainer, .taskListForm, .taskList__item {
+  padding: 2rem;
+}
+
+.p_30 {
+  padding: 3rem;
+}
+
+.widthFull, .task__item, .task__form, .task__items, .boardSection, .commonInputContainer, .btnContainer, .taskListForm .inputContainer, .commonInputText, .taskListForm .inputContainer > input[type=text] {
+  width: 100%;
+}
+
+.heightFull {
+  height: 100%;
+}
+
+.rounded_20, .commonFormContainer, .taskListForm, .taskList__item, .commonButton, .taskList__btn, .boardButton, .taskListForm__button, .taskList__button, .transparentToGreenBtn, .commonInputText, .taskListForm .inputContainer > input[type=text] {
+  border-radius: 2rem;
+}
+
+.rounded_30 {
+  border-radius: 3rem;
+}
+
+.positionRel, .taskListBtnContainer {
+  position: relative;
+}
+
+.transition, .commonButton, .taskList__btn, .boardButton, .taskListForm__button, .taskList__button, .transparentToGreenBtn, .commonInputText, .taskListForm .inputContainer > input[type=text] {
+  transition: all 0.5s ease-in;
+}
+
+.commonInputText, .taskListForm .inputContainer > input[type=text] {
+  padding: 1rem;
+  font-size: 1.6px;
+  border: 0.1rem solid #8FBC8F;
+}
+.commonInputText::placeholder, .taskListForm .inputContainer > input[type=text]::placeholder {
+  color: rgba(143, 188, 143, 0.5);
+}
+.commonInputText:focus, .taskListForm .inputContainer > input[type=text]:focus, .commonInputText:active, .taskListForm .inputContainer > input[type=text]:active {
+  outline: none;
+  border-color: #2E8B57;
+}
+
+.buttonText, .transparentToGreenBtn {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.commonButton, .taskList__btn, .boardButton, .taskListForm__button, .taskList__button, .transparentToGreenBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.commonButtonHover {
+  outline: none;
+  border: 0.1rem solid #2E8B57;
+  background-color: #2E8B57;
+}
+
+.transparentToGreenBtn {
+  border: 0.1rem solid #8FBC8F;
+  background-color: transparent;
+  color: #8FBC8F;
+  padding: 15px 40px;
+}
+.transparentToGreenBtn:hover {
+  border: 0.1rem solid #345e37;
+  background: #345e37;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.commonInputContainer, .btnContainer, .taskListForm .inputContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.commonFormContainer, .taskListForm, .taskList__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.boardSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.boardButton, .taskListForm__button, .taskList__button {
+  color: #FFFFFF;
+  font-size: 1.6px;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  background-color: #345e37;
+  border: none;
+}
+.boardButton:hover, .taskListForm__button:hover, .taskList__button:hover {
+  border: none;
+  outline: none;
+  background-color: #2E8B57;
+}
+
+.taskList__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: fit-content;
+}
+.taskList__settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.taskList__icon {
+  cursor: pointer;
+}
+.taskList__btn {
+  border: none;
+  font-size: 2.5rem;
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.15);
+  height: fit-content;
+  margin: 0 1.2rem;
+  width: 33rem;
+  backdrop-filter: blur(20px);
+}
+.taskList__btn:hover {
+  outline: none;
+  border: none;
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+.taskList__item {
+  height: fit-content;
+  margin: 0 1.2rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  width: 330px;
+  background-color: #FFFFFF;
+}
+.taskList__heading {
+  font-size: 3.1rem;
+}
+.taskListForm {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 3%;
+  width: 33rem;
+  height: fit-content;
+  background-color: #FFFFFF;
+}
+.task__form {
+  padding: 1rem;
+  border-radius: 1rem;
+  height: fit-content;
+  box-shadow: 0 0 1rem 0 rgba(69, 69, 69, 0.25);
+}
+.task__item {
+  padding: 1rem;
+  border-radius: 1rem;
+  height: fit-content;
+  box-shadow: 0 0 1rem 0 rgba(69, 69, 69, 0.25);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+}
+
+@media all and (max-device-width: 1024px) and (max-device-height: 600px) {
+  .taskList__item, .taskList__btn {
+    width: 30rem;
+  }
+}
+@media all and (max-device-width: 430px) {
+  .taskList__item, .taskList__btn {
+    width: 28rem;
+  }
+}
+
+/*# sourceMappingURL=Board.module.css.map */

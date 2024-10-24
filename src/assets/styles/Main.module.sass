@@ -1,0 +1,151 @@
+@import "Common.module"
+
+.main
+  @include dFlex(column, center, center)
+  @extend .containerPaddings
+  @extend .widthFull
+  padding-top: 70px
+  padding-bottom: 70px
+
+  &__heading
+    color: $bgColor
+    text-transform: uppercase
+    margin: 0
+
+  &__subheading
+    color: $accentColor
+    font-size: $h4Size
+    font-weight: 700
+
+  &__imageWrapper
+    @extend .widthFull
+    height: 53rem
+    margin-bottom: 4.5rem
+
+  &__img
+    @extend .widthFull
+    @extend .heightFull
+    object-fit: contain
+    object-position: center
+
+
+@media all and (max-device-width: 1920px)
+  .main
+    padding-top: 4rem
+    padding-bottom: 4rem
+
+    &__imageWrapper
+      height: 65rem
+      margin-bottom: 3.5rem
+
+@media all and (max-device-width: 1920px) and (min-device-height: 695px)
+  .main
+
+    &__imageWrapper
+      height: 33rem
+      margin-bottom: 3.5rem
+
+@media all and (max-device-width: 1540px) and (max-device-height: 730px)
+  .main
+    &__imageWrapper
+      height: 33rem
+      margin-bottom: 3.5rem
+
+
+@media all and (max-device-width: 1370px) and (max-device-height: 770px)
+  .main
+
+    &__heading
+      font-size: $h2Size
+
+    &__imageWrapper
+      height: 33rem
+      margin-bottom: 2.5rem
+
+@media all and (max-device-width: 1280px) and (max-device-height: 880px)
+  .main
+
+    &__imageWrapper
+      height: 40rem
+      margin-bottom: 2.5rem
+
+
+@media all and (max-device-width: 1024px) and (max-device-height: 770px)
+  .main
+    &__heading
+      font-size: $h2Size
+
+    &__imageWrapper
+      height: 35rem
+      margin-bottom: 1rem
+
+@media all and (max-device-width: 1024px) and (max-device-height: 600px)
+  .main
+    &__heading
+      font-size: $h2Size
+
+    &__imageWrapper
+      height: 35rem
+      margin-bottom: 1rem
+
+@media all and (max-device-width: 1024px) and (orientation: portrait)
+  .main
+    &__imageWrapper
+      height: 430px
+      margin-bottom: 35px
+
+@media all and (max-device-width: 768px) and (orientation: portrait)
+  .main
+
+    &__heading
+      font-size: $h4Size
+
+    &__subheading
+      font-size: $h5Size
+
+@media all and (max-device-width: 540px) and (max-device-height: 720px)
+  .main
+    &__heading
+      font-size: $h4Size
+
+    &__subheading
+      font-size: $h5Size
+
+
+    &__imageWrapper
+      height: 35rem
+      margin-bottom: 1rem
+
+@media all and (max-device-width: 430px)
+  .main
+    padding: 4rem 3rem
+
+
+    &__heading
+      font-size: $h4Size
+
+    &__subheading
+      font-size: $h5Size
+
+
+    &__imageWrapper
+      height: 20rem
+      margin-bottom: 1rem
+
+
+@media all and (max-device-width: 412px)
+  .main
+    &__heading
+      font-size: $h4Size
+
+    &__subheading
+      font-size: $h5Size
+
+
+@media all and (max-device-width: 375px)
+  .main
+    &__heading
+      font-size: $h5Size
+
+    &__subheading
+      font-size: $pSize

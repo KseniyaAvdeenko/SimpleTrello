@@ -1,0 +1,155 @@
+@import "Common.module"
+
+.profile
+  @include dFlex(row, flex-start, flex-start)
+  @extend .containerPaddings
+  @extend .widthFull
+  padding-top: 4rem
+  padding-bottom: 4rem
+
+.profileContainer
+  @extend .widthFull
+  @extend .heightFull
+  @include dFlex(row, flex-start, center)
+  flex-wrap: wrap
+
+.boardBtn
+  @extend .commonButton
+  padding: 1.5rem 4.5rem
+  width: 23%
+  @extend .buttonText
+  height: 10rem
+  margin: 0 1.2rem 2rem
+
+.newBoardBtnContainer
+  @extend .positionRel
+  width: 23%
+  height: 10rem
+  margin: 0 1.2rem 2rem
+
+.newBoardButton
+  @extend .widthFull
+  @extend .heightFull
+  @extend .transparentToGreenBtn
+
+
+  & > span:first-of-type
+    @extend .buttonText
+
+
+.userBoardLink
+  @extend .boardBtn
+  text-decoration: none
+  color: #1E1E1E
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.30)
+
+.newBoardFormContainer
+  position: absolute
+  top: 5rem
+  left: -3rem
+  backdrop-filter: blur(1rem)
+  @extend .commonFormContainer
+  width: 30rem
+  height: fit-content
+
+
+.newBoardForm
+  @extend .widthFull
+  @extend .heightFull
+  @extend .commonFormContainer
+  @include borders($accentColor)
+
+  & .inputContainer
+    @include dFlex(row, space-between, center)
+    @extend .mb_10
+
+    & > input[type='text']
+      @extend .commonInputText
+
+  & .inputContainer__items
+    @include dFlex(column, center, center)
+    @extend .widthFull
+
+  & .inputContainer__colors
+    @extend .commonInputContainer
+    margin: 1rem 0
+    flex-wrap: wrap
+
+
+  &__button
+    font-weight: 500
+    @extend .mt_10
+    color: $textColor
+    font-size: $pSize
+    padding: 1rem 3rem
+    @include borders(transparent)
+    background-color: $primaryColor
+    @extend .transition
+    @extend .rounded_30
+
+    &__button:hover
+      @extend .commonButtonHover
+
+
+.colors__label
+  border-radius: .5rem
+  width: 3rem
+  height: 3rem
+  margin: .5rem
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15)
+
+  & > input[type='radio']
+    display: none
+
+
+
+
+@media all and (max-device-width: 1280px) and (max-device-height: 880px)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 25%
+    height: 8.5rem
+
+@media all and (max-device-width: 1024px) and (max-device-height: 770px)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 30%
+
+@media all and (max-device-width: 1024px) and (max-device-height: 600px)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 33%
+
+@media all and (max-device-width: 1024px) and (orientation: portrait)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 33%
+
+@media all and (max-device-width: 768px) and (orientation: portrait)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 43%
+
+
+@media all and (max-device-width: 540px) and (max-device-height: 720px)
+  .profile
+    padding: 4rem 3rem
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 50%
+
+@media all and (max-device-width: 430px)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 63%
+
+@media all and (max-device-width: 390px)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 70%
+
+@media all and (max-device-width: 375px)
+  .boardBtn,
+  .newBoardBtnContainer
+    width: 75%
+    height: 7.5rem

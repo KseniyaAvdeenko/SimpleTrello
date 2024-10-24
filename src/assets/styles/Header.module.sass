@@ -1,0 +1,85 @@
+@import "Common.module"
+
+.header
+  @extend .commonInputContainer
+  @extend .containerPaddings
+  border-bottom: .1rem solid $accentColor
+  padding-top: 2rem
+  padding-bottom: 2rem
+
+  &__container
+    @include dFlex(row, space-between, center)
+    @extend .widthFull
+
+
+.auth
+  &__buttons
+    @include dFlex(row, flex-end, center)
+
+  &__button
+    @extend .transparentToGreenBtn
+    @extend .rounded_30
+
+  &__buttonLink
+    @extend .transparentToGreenBtn
+    @include borders(transparent)
+    outline: none
+    text-decoration: none
+    @extend .rounded_30
+    @extend .mr_20
+
+@media all and (max-device-width: 1920px)
+  .header
+    @extend .containerPaddings
+    padding-top: 2rem
+    padding-bottom: 2rem
+
+@media all and (max-device-width: 1580px) and (max-device-height: 730px)
+  .header
+    padding-top: 1rem
+    padding-bottom: 1rem
+  .auth
+    &__buttonLink
+      font-size: 2rem
+      padding: 1rem 3rem
+
+@media all and (max-device-width: 1024px) and (max-device-height: 770px)
+  .auth
+    &__buttonLink
+      font-size: 2rem
+      padding: 1rem 3rem
+
+@media all and (max-device-width: 1024px) and (max-device-height: 600px)
+  .auth
+    &__buttonLink
+      font-size: 2rem
+      padding: 1rem 3rem
+
+@media all and (max-device-width: 540px) and (max-device-height: 720px)
+  .auth
+    &__button
+      padding: 1rem 3rem
+      font-size: $pSize
+  .header
+    padding: 1rem 3rem
+
+@media all and (max-device-width: 43rem)
+  .header
+    padding: 1rem 3rem
+
+  .auth
+    &__button,
+    &__buttonLink
+      padding: 1rem 3rem
+      font-size: $pSize
+      margin-right: 0
+
+    &__buttons
+      @include dFlex(column, flex-start, flex-end)
+
+
+
+@media all and (max-device-width: 412px)
+  .header
+    padding: 1rem 3rem
+
