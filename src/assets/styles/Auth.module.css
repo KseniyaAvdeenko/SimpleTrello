@@ -21,10 +21,6 @@
   text-align: center;
 }
 
-.blockIHidden {
-  display: none !important;
-}
-
 .mb_10 {
   margin-bottom: 1rem;
 }
@@ -92,8 +88,9 @@
 
 .commonInputText, .cards__input {
   padding: 1rem;
-  font-size: 1.6px;
+  font-size: 1.6rem;
   border: 0.1rem solid #8FBC8F;
+  height: 4rem;
 }
 .commonInputText::placeholder, .cards__input::placeholder {
   color: rgba(143, 188, 143, 0.5);
@@ -232,11 +229,8 @@
   align-items: flex-start;
   margin-bottom: 1rem;
 }
-.cards__input {
-  padding: 1.5rem;
-}
-.cards__input:-webkit-autofill:hover, .cards__input:-webkit-autofill:focus, .cards__input:-webkit-autofill {
-  background-color: transparent !important;
+.blockIHidden {
+  display: none !important;
 }
 
 .signUpCard {

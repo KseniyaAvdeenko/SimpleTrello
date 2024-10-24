@@ -21,10 +21,6 @@
   text-align: center;
 }
 
-.blockIHidden {
-  display: none !important;
-}
-
 .mb_10 {
   margin-bottom: 1rem;
 }
@@ -92,8 +88,9 @@
 
 .commonInputText {
   padding: 1rem;
-  font-size: 1.6px;
+  font-size: 1.6rem;
   border: 0.1rem solid #8FBC8F;
+  height: 4rem;
 }
 .commonInputText::placeholder {
   color: rgba(143, 188, 143, 0.5);

@@ -31,7 +31,7 @@ export const taskListSlice = createSlice({
             state.message = 'Task list is deleted successfully'
         },
         deleteTaskListFail(state, action: PayloadAction<string>) {
-            state.error = 'Task list deletion is failed'
+            state.error = action.payload
         },
         createTaskListSuccess(state, action: PayloadAction<ITaskList>) {
             state.taskList = action.payload;

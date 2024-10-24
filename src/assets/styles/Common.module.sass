@@ -11,7 +11,7 @@ $h2Size: 4.9rem
 $h3Size: 3.9rem
 $h4Size: 3.1rem
 $h5Size: 2.5rem
-$pSize: 1.6px
+$pSize: 1.6rem
 $smallSize: 1.2rem
 $xxsSize: 1rem
 $titleFont: "Work Sans", sans-serif
@@ -39,9 +39,7 @@ $textFont: "Karla", sans-serif
   text-align: center
 
 
-//--------display----------
-.blockIHidden
-  display: none !important
+
 //--------flex----------
 @mixin dFlex($direction, $jc, $ai)
   display: flex
@@ -123,6 +121,7 @@ $textFont: "Karla", sans-serif
   font-size: $pSize
   @include borders($accentColor)
   @extend .transition
+  height: 4rem
 
   &::placeholder
     color: rgba(143, 188, 143, 0.50)

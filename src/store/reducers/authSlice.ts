@@ -36,7 +36,6 @@ export const authSlice = createSlice({
         },
         signedIn(state){
             state.isAuth = true;
-            state.message = 'You are logged out successfully';
         },
         signedOutSuccess(state){
             state.isAuth = false

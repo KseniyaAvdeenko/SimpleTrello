@@ -21,10 +21,6 @@
   text-align: center;
 }
 
-.blockIHidden {
-  display: none !important;
-}
-
 .mb_10 {
   margin-bottom: 1rem;
 }
@@ -92,8 +88,9 @@
 
 .commonInputText, .taskListForm .inputContainer > input[type=text] {
   padding: 1rem;
-  font-size: 1.6px;
+  font-size: 1.6rem;
   border: 0.1rem solid #8FBC8F;
+  height: 4rem;
 }
 .commonInputText::placeholder, .taskListForm .inputContainer > input[type=text]::placeholder {
   color: rgba(143, 188, 143, 0.5);
@@ -164,7 +161,7 @@
 
 .boardButton, .taskListForm__button, .taskList__button {
   color: #FFFFFF;
-  font-size: 1.6px;
+  font-size: 1.6rem;
   font-weight: 500;
   padding: 1rem 2rem;
   background-color: #345e37;

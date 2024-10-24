@@ -26,12 +26,12 @@ export const boardSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload
         },
-        deleteBoardSuccess(state, action: PayloadAction<IBoard[]>) {
+        deleteBoardSuccess(state) {
             state.board = null;
             state.message = 'Board is deleted successfully'
         },
         deleteBoardFail(state, action: PayloadAction<string>) {
-            state.error = 'Board deletion is failed'
+            state.error = action.payload
         },
         createBoardSuccess(state, action: PayloadAction<IBoard>) {
             state.board = action.payload;

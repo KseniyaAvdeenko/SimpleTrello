@@ -21,10 +21,6 @@
   text-align: center;
 }
 
-.blockIHidden {
-  display: none !important;
-}
-
 .mb_10, .newBoardForm .inputContainer {
   margin-bottom: 1rem;
 }
@@ -92,8 +88,9 @@
 
 .commonInputText, .newBoardForm .inputContainer > input[type=text] {
   padding: 1rem;
-  font-size: 1.6px;
+  font-size: 1.6rem;
   border: 0.1rem solid #8FBC8F;
+  height: 4rem;
 }
 .commonInputText::placeholder, .newBoardForm .inputContainer > input[type=text]::placeholder {
   color: rgba(143, 188, 143, 0.5);
@@ -219,7 +216,7 @@
 .newBoardForm__button {
   font-weight: 500;
   color: #FFFFFF;
-  font-size: 1.6px;
+  font-size: 1.6rem;
   padding: 1rem 3rem;
   border: 0.1rem solid transparent;
   background-color: #345e37;

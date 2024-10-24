@@ -15,7 +15,7 @@ export const loadUsers = () => async (dispatch: AppDispatch) => {
     }
 }
 
-export const signUp = (users: IUser[]|null, newUser: IUser) => async (dispatch: AppDispatch) => {
+export const signUpUser = (users: IUser[]|null, newUser: IUser) => async (dispatch: AppDispatch) => {
     if (users) {
         try {
             if (users.length) {
@@ -39,13 +39,13 @@ export const signUp = (users: IUser[]|null, newUser: IUser) => async (dispatch: 
         return dispatch(authSlice.actions.signUpFail('Problems in database'))
     }
 }
-
-export const signIn = (users: IUser[]|null, user: IUser) => async (dispatch: AppDispatch) => {
+///!!!!!!!!!!!!!!!!!!!!!!
+export const signInUser = (users: IUser[]|null, user: { email: string, password: string }) => async (dispatch: AppDispatch) => {
     if (users) {
         try {
             if (users.length) {
                 if (users.filter(el => el.email === user.email && el.password === user.password).length) {
-                    dispatch(authSlice.actions.signInSuccess(user))
+                    dispatch(authSlice.actions.signInSuccess(users.filter(el => el.email === user.email && el.password === user.password)[0]))
                 } else {
                     dispatch(authSlice.actions.signInFail('User with this email is not existed yet'))
                 }
@@ -62,4 +62,7 @@ export const signIn = (users: IUser[]|null, user: IUser) => async (dispatch: App
 
 export const signOut = () => async (dispatch: AppDispatch) => {
     dispatch(authSlice.actions.signedOutSuccess())
+}
+export const signedIn = () => async (dispatch: AppDispatch) => {
+    dispatch(authSlice.actions.signedIn())
 }
