@@ -20,10 +20,10 @@ export const createBoard = (newBoard: IBoard) => async (dispatch: AppDispatch) =
         await updateDoc(doc(db, 'trello', 'Boards'), {
             'boards': arrayUnion(newBoard)
         });
-        dispatch(loadBoards())
-        return dispatch(boardSlice.actions.createBoardSuccess(newBoard))
+        dispatch(boardSlice.actions.createBoardSuccess(newBoard));
+        dispatch(loadBoards());
     } catch {
-        return dispatch(boardSlice.actions.createBoardFail('Board creation is failed'))
+        dispatch(boardSlice.actions.createBoardFail('Board creation is failed'))
     }
 }
 
@@ -32,9 +32,9 @@ export const deleteBoard = (board: IBoard) => async (dispatch: AppDispatch) => {
         await updateDoc(doc(db, 'trello', 'Boards'), {
             'boards': arrayRemove(board)
         });
-        dispatch(loadBoards())
-        return dispatch(boardSlice.actions.deleteBoardSuccess())
+        dispatch(boardSlice.actions.deleteBoardSuccess());
+        dispatch(loadBoards());
     } catch {
-        return dispatch(boardSlice.actions.deleteBoardFail('Board deletion is failed'))
+        dispatch(boardSlice.actions.deleteBoardFail('Board deletion is failed'))
     }
 }

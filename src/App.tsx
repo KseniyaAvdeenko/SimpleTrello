@@ -79,20 +79,12 @@ function App() {
                 <Header showAuthModal={showAuthModal}/>
                 <Routes>
                     {isAuth
-                        ? <Route
-                            path={'/'}
-                            element={<Main/>}
-                        />
-                        : <>
-                            <Route
-                                path={'/board/:url'}
-                                element={<Board/>}
-                            />
-                            <Route
-                                path={'/profile'}
-                                element={<Profile/>}
-                            />
+                        ? <>
+                            <Route path={'/'} element={<Main/>}/>
+                            <Route path={'/board/:url'} element={<Board/>}/>
+                            <Route path={'/profile'} element={<Profile/>}/>
                         </>
+                        : <Route path={'/'} element={<Main/>}/>
                     }
                     <Route path="*" element={<Navigate to="/profile/"/>}/>
                 </Routes>

@@ -2,16 +2,15 @@ import React, {ChangeEvent, FC, FormEvent, useEffect, useState} from 'react';
 import styles from '../../assets/styles/Auth.module.sass';
 import {useAppSelector} from "../../hooks/useAppSelector";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
-import {useNavigate} from "react-router-dom";
 import ClosedEye from '../../assets/images/eyeClosed.svg';
 import OpenedEye from '../../assets/images/eyeOpened.svg';
 import {IAuthCard} from "../../interface/IAuthCard";
 import {encodeToken} from "../../utils/passwordHashing";
 import {signInUser} from "../../store/actions/authAction";
+import {redirect} from "react-router-dom";
 
 const SignInForm: FC<{ authCardAndForms: IAuthCard; setModal: Function}> = ({authCardAndForms, setModal}) => {
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
     const [user, setUser] = useState<{ email: string, password: string }>({email: '', password: ''})
     const {users, error, isAuth} = useAppSelector(state => state.authReducer)
     const [passwordWatcher, setPasswordWatcher] = useState<{ type: string; image: string }>({
@@ -19,15 +18,14 @@ const SignInForm: FC<{ authCardAndForms: IAuthCard; setModal: Function}> = ({aut
         image: ClosedEye
     })
     useEffect(() => {
-        if (isAuth) navigate('/profile')
+        if (isAuth) redirect('/profile')
     }, [isAuth])
 
 
     const onSingInSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         dispatch(signInUser(users, {email: user.email, password: encodeToken(user.password)}))
-        console.log(user)
-        //setModal(false)
+        setModal(false)
     }
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => setUser({...user, [e.target.name]: e.target.value})

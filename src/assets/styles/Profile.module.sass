@@ -15,6 +15,7 @@
 
 .boardBtn
   @extend .commonButton
+  position: relative
   padding: 1.5rem 4.5rem
   width: 23%
   @extend .buttonText
@@ -30,8 +31,8 @@
 .newBoardButton
   @extend .widthFull
   @extend .heightFull
+  border-radius: 1.5rem
   @extend .transparentToGreenBtn
-
 
   & > span:first-of-type
     @extend .buttonText
@@ -39,25 +40,45 @@
 
 .userBoardLink
   @extend .boardBtn
+  @extend .positionRel
+  border-radius: 1.5rem
   text-decoration: none
   color: #1E1E1E
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.30)
 
+  &__deleteBtn
+    position: absolute
+    top: 1rem
+    right: 1rem
+    z-index: 2
+    display: none
+
+    &:hover path
+      fill: $textColor
+
+
 .newBoardFormContainer
   position: absolute
-  top: 5rem
-  left: -3rem
-  backdrop-filter: blur(1rem)
-  @extend .commonFormContainer
+  top: -12rem
+  left: -6rem
+  backdrop-filter: blur(.4rem)
+  display: none
   width: 30rem
   height: fit-content
+  @extend .p_20
+  @extend .rounded_20
+  z-index: 3
 
+  &_open
+    display: flex!important
+    @include dFlex(column, center, center)
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2)
 
 .newBoardForm
   @extend .widthFull
   @extend .heightFull
   @extend .commonFormContainer
-  @include borders($accentColor)
+  //@include borders($accentColor)
 
   & .inputContainer
     @include dFlex(row, space-between, center)
@@ -69,6 +90,8 @@
   & .inputContainer__items
     @include dFlex(column, center, center)
     @extend .widthFull
+    & > p
+      color: $bgColor
 
   & .inputContainer__colors
     @extend .commonInputContainer
@@ -102,7 +125,13 @@
     display: none
 
 
-
+.closeBtnContainer
+  @include dFlex(row, flex-end, center)
+  @extend .widthFull
+  &__btn
+    cursor: pointer
+    &:hover path
+      stroke: $primaryColor
 
 @media all and (max-device-width: 1280px) and (max-device-height: 880px)
   .boardBtn,

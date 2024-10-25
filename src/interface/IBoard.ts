@@ -1,6 +1,5 @@
 export interface IBoard {
-    boardId: string;
-    userId: string;
+    userId: number;
     name: string;
     background: string;
     textColor: string;

@@ -5,7 +5,7 @@ import {IUser} from "../../interface/IUser";
 const initialState:IAuthInitialState = {
     isAuth: false,
     signedUp:false,
-    currentUser: localStorage.currentUser || null,
+    currentUser: JSON.parse(localStorage.currentUser) || null,
     error: '',
     message: '',
     users: null,

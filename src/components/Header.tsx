@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import styles from '../assets/styles/Header.module.sass'
-import {Link} from "react-router-dom";
+import {Link, redirect} from "react-router-dom";
 import Logo from '../assets/images/simpleTrelloLogo.svg'
 import {useAppSelector} from "../hooks/useAppSelector";
 import {useAppDispatch} from "../hooks/useAppDispatch";
@@ -8,18 +8,24 @@ import {signOut} from "../store/actions/authAction";
 
 
 const Header: FC<{showAuthModal: Function}> = ({showAuthModal}) => {
-    const {isAuth} = useAppSelector(state => state.authReducer)
+    const {isAuth, currentUser} = useAppSelector(state => state.authReducer)
     const [logOutIcon, setLogOutIcon] = useState<string>('#8FBC8F')
     const dispatch = useAppDispatch()
+
+    const logOut = () =>{
+        dispatch(signOut())
+        redirect(' /')
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.header__container}>
                 <Link to='/'><img src={Logo} alt="logo"/></Link>
                 {isAuth
                     ? <div className={styles.auth__buttons}>
-                        <Link to="/profile/" className={styles.auth__buttonLink}>{JSON.parse(localStorage.loggedUser).login}</Link>
+                        <Link to="/profile" className={styles.auth__buttonLink}>{currentUser && currentUser.login}</Link>
                         <svg
-                            onClick={()=>dispatch(signOut())}
+                            onClick={logOut}
                             onMouseOver={() => setLogOutIcon('#345e37')}
                             onMouseOut={() => setLogOutIcon('#8FBC8F')}
                             width="23" height="20" viewBox="0 0 29 26" fill="none"
