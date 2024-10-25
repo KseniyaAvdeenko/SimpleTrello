@@ -32,7 +32,7 @@
   margin-bottom: 3rem;
 }
 
-.mr_10 {
+.mr_10, .taskList__copyIcon {
   margin-right: 1rem;
 }
 
@@ -53,7 +53,7 @@
   padding-right: 14%;
 }
 
-.p_20, .taskList__btn, .commonFormContainer, .taskListForm, .taskList__item {
+.p_20, .taskList__btn, .commonFormContainer, .taskListForm_open, .taskList__item {
   padding: 2rem;
 }
 
@@ -61,7 +61,7 @@
   padding: 3rem;
 }
 
-.widthFull, .task__item, .task__form, .task__items, .boardSection, .commonInputContainer, .btnContainer, .taskListForm .inputContainer, .commonInputText, .taskListForm .inputContainer > input[type=text] {
+.widthFull, .task__item, .task__form, .task__items, .boardSection, .commonInputContainer, .btnContainer, .taskListForm .inputContainer, .commonInputText, .task__input, .taskListForm .inputContainer > input[type=text] {
   width: 100%;
 }
 
@@ -77,7 +77,7 @@
   border-radius: 1.5rem;
 }
 
-.rounded_20, .commonFormContainer, .taskListForm, .taskList__item, .commonButton, .taskList__btn, .boardButton, .taskListForm__button, .taskList__button, .transparentToGreenBtn, .commonInputText, .taskListForm .inputContainer > input[type=text] {
+.rounded_20, .commonFormContainer, .taskListForm_open, .taskList__item, .commonButton, .taskList__btn, .boardButton, .taskListForm__button, .taskList__button, .transparentToGreenBtn, .commonInputText, .task__input, .taskListForm .inputContainer > input[type=text] {
   border-radius: 2rem;
 }
 
@@ -89,20 +89,20 @@
   position: relative;
 }
 
-.transition, .commonButton, .taskList__btn, .boardButton, .taskListForm__button, .taskList__button, .transparentToGreenBtn, .commonInputText, .taskListForm .inputContainer > input[type=text] {
+.transition, .commonButton, .taskList__btn, .boardButton, .taskListForm__button, .taskList__button, .transparentToGreenBtn, .commonInputText, .task__input, .taskListForm .inputContainer > input[type=text] {
   transition: all 0.5s ease-in;
 }
 
-.commonInputText, .taskListForm .inputContainer > input[type=text] {
+.commonInputText, .task__input, .taskListForm .inputContainer > input[type=text] {
   padding: 1rem;
   font-size: 1.6rem;
   border: 0.1rem solid #8FBC8F;
   height: 4rem;
 }
-.commonInputText::placeholder, .taskListForm .inputContainer > input[type=text]::placeholder {
+.commonInputText::placeholder, .task__input::placeholder, .taskListForm .inputContainer > input[type=text]::placeholder {
   color: rgba(143, 188, 143, 0.5);
 }
-.commonInputText:focus, .taskListForm .inputContainer > input[type=text]:focus, .commonInputText:active, .taskListForm .inputContainer > input[type=text]:active {
+.commonInputText:focus, .task__input:focus, .taskListForm .inputContainer > input[type=text]:focus, .commonInputText:active, .task__input:active, .taskListForm .inputContainer > input[type=text]:active {
   outline: none;
   border-color: #2E8B57;
 }
@@ -145,7 +145,7 @@
   align-items: center;
 }
 
-.commonFormContainer, .taskListForm, .taskList__item {
+.commonFormContainer, .taskListForm_open, .taskList__item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,7 +161,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow-x: auto;
+  overflow: auto;
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
@@ -182,18 +182,18 @@
 
 .taskList__items {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   width: fit-content;
 }
 .taskList__settings {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
-.taskList__icon {
+.taskList__copyIcon, .taskList__icon {
   cursor: pointer;
 }
 .taskList__btn {
@@ -227,15 +227,23 @@
   z-index: 3;
   top: 0;
   left: 3%;
+  display: none;
   width: 33rem;
   height: fit-content;
+}
+.taskListForm_open {
+  display: flex !important;
   background-color: #FFFFFF;
 }
 .task__form {
   padding: 1rem;
   border-radius: 1rem;
   height: fit-content;
+  display: none;
   box-shadow: 0 0 1rem 0 rgba(69, 69, 69, 0.25);
+}
+.task__form_open {
+  display: block;
 }
 .task__item {
   padding: 1rem;
@@ -248,7 +256,6 @@
   align-items: center;
   cursor: grab;
 }
-
 @media all and (max-device-width: 1024px) and (max-device-height: 600px) {
   .taskList__item, .taskList__btn {
     width: 30rem;

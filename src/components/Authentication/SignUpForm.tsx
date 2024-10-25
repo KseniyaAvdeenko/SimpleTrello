@@ -6,7 +6,6 @@ import OpenedEye from '../../assets/images/eyeOpened.svg';
 import {IAuthCard} from "../../interface/IAuthCard";
 import {IUser} from "../../interface/IUser";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
-import {createId} from "../../utils/createId";
 import {encodeToken} from "../../utils/passwordHashing";
 import {signUpUser} from "../../store/actions/authAction";
 
@@ -31,7 +30,7 @@ const SignUpForm: FC<{ authCardAndForms: IAuthCard;showAuthForm: Function }> = (
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         dispatch(signUpUser(users, {
-            id: createId(),
+            id: Date.parse(new Date().toISOString()),
             login: newUser.login,
             email: newUser.email,
             password: encodeToken(newUser.password)

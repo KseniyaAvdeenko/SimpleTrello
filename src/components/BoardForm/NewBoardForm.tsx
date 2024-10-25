@@ -3,7 +3,6 @@ import styles from '../../assets/styles/Profile.module.sass';
 import {IBoard} from "../../interface/IBoard";
 import {borderBgColors, borderTextColors} from "../../utils/boardOptions";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
-import {createId} from "../../utils/createId";
 import {createBoard} from "../../store/actions/boardAction";
 import CloseIcon from "../../icons/CloseIcon";
 import OptionChoosing from "./OptionChoosing";
@@ -19,15 +18,19 @@ const NewBoardForm: FC<INewBoardFormProps> = ({isOpen, setIsOpen, currentUserId}
 
     const [newBoard, setNewBoard] = useState<IBoard>({
         name: '',
-        textColor: "",
-        background: '',
+        textColor: '#000000',
+        background: '#545454',
         userId: currentUserId,
         url: ''
     });
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.target.name === 'name'
-            ? setNewBoard({...newBoard, name: e.target.value, url: e.target.value + createId()})
+            ? setNewBoard({
+                ...newBoard,
+                name: e.target.value,
+                url: e.target.value + Date.parse(new Date().toISOString())
+            })
             : setNewBoard({...newBoard, [e.target.name]: e.target.value})
     }
 

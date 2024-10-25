@@ -1,33 +1,17 @@
-import React, {FC, MouseEvent} from 'react';
-import {IBoard} from "../interface/IBoard";
-import {useAppDispatch} from "../hooks/useAppDispatch";
-import {deleteBoard} from "../store/actions/boardAction";
+import React, {FC} from 'react';
 
+interface IDeleteTaskIconProps {
+    classname: string;
+    fill: string;
+}
 
-const DeleteIcon: FC<{classname: string,  board: IBoard}> = ({classname, board}) => {
-    const dispatch = useAppDispatch();
-    const onClickHandler = (e: MouseEvent<SVGSVGElement>)=>{
-        e.stopPropagation();
-        dispatch(deleteBoard(board))
-    }
-
+const DeleteIcon: FC<IDeleteTaskIconProps> = ({classname, fill}) => {
     return (
-        <svg className={classname} onClick={e=>onClickHandler(e)} width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g opacity="0.05" filter="url(#filter0_b_349_197)">
-                <rect width="13" height="14" rx="2" fill="#ffffff"/>
-            </g>
+        <svg className={classname} width="11" height="12" viewBox="0 0 11 12" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
             <path
-                d="M2.66667 11.6667C2.66667 12.0203 2.80714 12.3594 3.05719 12.6095C3.30724 12.8595 3.64638 13 4 13H9.33333C9.68696 13 10.0261 12.8595 10.2761 12.6095C10.5262 12.3594 10.6667 12.0203 10.6667 11.6667V3.66667H2.66667V11.6667ZM4 5H9.33333V11.6667H4V5ZM9 1.66667L8.33333 1H5L4.33333 1.66667H2V3H11.3333V1.66667H9Z"
-                fill="#1E1E1E"/>
-            <defs>
-                <filter id="filter0_b_349_197" x="-100" y="-100" width="213" height="214" filterUnits="userSpaceOnUse"
-                        colorInterpolationFilters="sRGB">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="50"/>
-                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_349_197"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_349_197" result="shape"/>
-                </filter>
-            </defs>
+                d="M2 12C1.63333 12 1.31956 11.8696 1.05867 11.6087C0.797778 11.3478 0.667111 11.0338 0.666667 10.6667V2H0V0.666667H3.33333V0H7.33333V0.666667H10.6667V2H10V10.6667C10 11.0333 9.86956 11.3473 9.60867 11.6087C9.34778 11.87 9.03378 12.0004 8.66667 12H2ZM8.66667 2H2V10.6667H8.66667V2ZM3.33333 9.33333H4.66667V3.33333H3.33333V9.33333ZM6 9.33333H7.33333V3.33333H6V9.33333Z"
+                fill={fill}/>
         </svg>
     );
 };

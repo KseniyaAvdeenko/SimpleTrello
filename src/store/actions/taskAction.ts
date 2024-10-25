@@ -21,21 +21,21 @@ export const createTask = (newTask: ITask) => async (dispatch: AppDispatch) => {
         await updateDoc(doc(db, 'trello', 'Tasks'), {
             'tasks': arrayUnion(newTask)
         });
+        dispatch(taskSlice.actions.createTaskSuccess(newTask))
         dispatch(loadTasks())
-        return dispatch(taskSlice.actions.createTaskSuccess(newTask))
     } catch {
-        return dispatch(taskSlice.actions.createTaskFail('Task creation is failed'))
+        dispatch(taskSlice.actions.createTaskFail('Task creation is failed'))
     }
 }
 
-export const deleteTask = (taskList: ITask) => async (dispatch: AppDispatch) => {
+export const deleteTask = (task: ITask) => async (dispatch: AppDispatch) => {
     try {
         await updateDoc(doc(db, 'trello', 'Tasks'), {
-            'taskLists': arrayRemove(taskList)
+            'tasks': arrayRemove(task)
         });
+        dispatch(taskSlice.actions.deleteTaskSuccess())
         dispatch(loadTasks())
-        return dispatch(taskSlice.actions.deleteTaskSuccess())
     } catch {
-        return dispatch(taskSlice.actions.deleteTaskFail('Task deletion is failed'))
+        dispatch(taskSlice.actions.deleteTaskFail('Task deletion is failed'))
     }
 }

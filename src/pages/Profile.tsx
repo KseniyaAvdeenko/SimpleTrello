@@ -5,7 +5,7 @@ import {useAppSelector} from "../hooks/useAppSelector";
 import {IBoard} from "../interface/IBoard";
 import {IUser} from "../interface/IUser";
 import NewBoardForm from "../components/BoardForm/NewBoardForm";
-import DeleteIcon from "../icons/DeleteIcon";
+import DeleteBoardIcon from "../icons/DeleteBoardIcon";
 
 const Profile: FC = () => {
     const {currentUser} = useAppSelector(state => state.authReducer);
@@ -65,7 +65,7 @@ const Profile: FC = () => {
                           style={{backgroundColor: board.background}}
                     >
                         {board.name}
-                        <DeleteIcon classname={styles.userBoardLink__deleteBtn} board={board}/>
+                        <DeleteBoardIcon classname={styles.userBoardLink__deleteBtn} board={board}/>
                     </Link>
                 ))
                 }

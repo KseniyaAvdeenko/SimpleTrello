@@ -4,7 +4,7 @@
   @include dFlex(column, flex-start, flex-start)
   @extend .containerPaddings
   @extend .widthFull
-  overflow-x: auto
+  overflow: auto
   padding-top: 4rem
   padding-bottom: 4rem
 
@@ -26,15 +26,18 @@
 
 .taskList
   &__items
-    @include dFlex(column, flex-start, flex-start)
+    @include dFlex(row, flex-start, flex-start)
     width: fit-content
 
   &__settings
-    @include dFlex(column, flex-start, center)
+    @include dFlex(row, flex-start, center)
 
-
+  &__copyIcon,
   &__icon
     cursor: pointer
+  &__copyIcon
+    @extend .mr_10
+
 
   &__btn
     @extend .commonButton
@@ -77,10 +80,14 @@
   z-index: 3
   top: 0
   left: 3%
-  @extend .commonFormContainer
+  display: none
   width: 33rem
   height: fit-content
-  background-color: $textColor
+
+  &_open
+    display: flex!important
+    @extend .commonFormContainer
+    background-color: $textColor
 
   & .inputContainer
     @extend .commonInputContainer
@@ -105,8 +112,11 @@
     @extend .widthFull
     border-radius: 1rem
     height: fit-content
+    display: none
     box-shadow: 0 0 1rem 0 $lightShadow
     @extend .mt_10
+    &_open
+      display: block
 
   &__item
     padding: 1rem
@@ -117,7 +127,8 @@
     @extend .mt_10
     @include dFlex(row, space-between, center)
     cursor: grab
-
+  &__input
+    @extend .commonInputText
 
 
 
