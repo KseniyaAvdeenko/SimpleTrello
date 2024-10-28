@@ -21,6 +21,7 @@ const SignInForm: FC<{ authCardAndForms: IAuthCard; setModal: Function}> = ({aut
         e.preventDefault()
         dispatch(signInUser(users, {email: user.email, password: encodeToken(user.password)}))
         setModal(false)
+        setUser({email: '', password: ''})
     }
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => setUser({...user, [e.target.name]: e.target.value})

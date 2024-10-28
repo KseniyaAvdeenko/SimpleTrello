@@ -36,6 +36,7 @@ const SignUpForm: FC<{ authCardAndForms: IAuthCard;showAuthForm: Function }> = (
             password: encodeToken(newUser.password)
         }))
         showAuthForm('signIn')
+        setNewUser({email: '', login: '', password: '', id: 0})
     }
 
     return (
