@@ -6,10 +6,17 @@ import {IBoard} from "../interface/IBoard";
 import {IUser} from "../interface/IUser";
 import NewBoardForm from "../components/BoardForm/NewBoardForm";
 import DeleteBoardIcon from "../icons/DeleteBoardIcon";
+import {useAppDispatch} from "../hooks/useAppDispatch";
+import {deleteBoard} from "../store/actions/boardAction";
+import {deleteTask} from "../store/actions/taskAction";
+import {deleteTaskList} from "../store/actions/taskListAction";
 
 const Profile: FC = () => {
     const {currentUser} = useAppSelector(state => state.authReducer);
     const {boards} = useAppSelector(state => state.boardReducer);
+    const {taskLists} = useAppSelector(state => state.taskListReducer);
+    const {tasks} = useAppSelector(state => state.taskReducer);
+    const dispatch = useAppDispatch();
     const [userBoards, setUserBoards] = useState<IBoard[]>([])
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
 
@@ -44,7 +51,13 @@ const Profile: FC = () => {
         }
     }
 
-
+    const deleteBoardHandler = (board: IBoard) => {
+        if (tasks && tasks.filter(el => el.boardUrl === board.url).length)
+            tasks.filter(el => el.boardUrl === board.url).map(task => dispatch(deleteTask(task)))
+        if (taskLists && taskLists.filter(el => el.boardUrl === board.url).length)
+            taskLists.filter(el => el.boardUrl === board.url).map(taskList => dispatch(deleteTaskList(taskList)))
+        dispatch(deleteBoard(board))
+    }
 
     return currentUser ? (
         <div className={styles.profile}>
@@ -65,7 +78,10 @@ const Profile: FC = () => {
                           style={{backgroundColor: board.background}}
                     >
                         {board.name}
-                        <DeleteBoardIcon classname={styles.userBoardLink__deleteBtn} board={board}/>
+                        <DeleteBoardIcon
+                            classname={styles.userBoardLink__deleteBtn}
+                            deleteBoardHandler={deleteBoardHandler}
+                            board={board}/>
                     </Link>
                 ))
                 }

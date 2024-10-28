@@ -5,8 +5,17 @@ import CopyIcon from "../icons/CopyIcon";
 import {IBoard} from "../interface/IBoard";
 import DeleteIcon from "../icons/DeleteIcon";
 import {useAppDispatch} from "../hooks/useAppDispatch";
-import {createTask, deleteTask, loadTasks} from "../store/actions/taskAction";
+import {createTask, deleteTask} from "../store/actions/taskAction";
 import TaskForm from "./TaskForm/TaskForm";
+import {dragLeaveTask} from "../utils/dragLeaveTask";
+import {useAppSelector} from "../hooks/useAppSelector";
+import {
+    createCurrentTask,
+    createCurrentTaskList,
+    deleteCurrTask,
+    deleteCurrTaskList
+} from "../store/actions/dragdropAction";
+import {createTaskList, deleteTaskList} from "../store/actions/taskListAction";
 
 
 interface ITaskListProps {
@@ -17,16 +26,23 @@ interface ITaskListProps {
 
 const TaskList: FC<ITaskListProps> = ({taskList, currentBoard, boardTasks}) => {
     const dispatch = useAppDispatch();
+    const {currentTask, currentTaskList} = useAppSelector(state => state.dragDropSliceReducer);
     const [isTaskFormOpen, setIsTaskFormOpen] = useState<boolean>(false)
 
     const [tasks, setTasks] = useState<ITask[]>([])
 
-    const [currentTaskList, setCurrentTaskList] = useState<ITaskList | null>(null);
-    const [currentTask, setCurrentTask] = useState<ITask | null>(null);
+    const [copyTaskListIconFill, setCopyTaskListIconFill] = useState(currentBoard.textColor);
+    const [deleteTaskListIconFill, setDeleteTaskListIconFill] = useState(currentBoard.textColor);
 
     useEffect(() => {
         if (boardTasks) setTasks(boardTasks.filter(el => el.taskListId === taskList.taskListId))
     }, [boardTasks])
+
+    useEffect(()=>{
+        tasks.map((task, i)=>{
+            if(task.order !== i+1) reIndexTasks(tasks)
+        })
+    }, [tasks])
 
     const sortTasks = (a: ITask, b: ITask) => {
         if (a.order > b.order) {
@@ -38,60 +54,53 @@ const TaskList: FC<ITaskListProps> = ({taskList, currentBoard, boardTasks}) => {
 
     const dragOverHandler = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault()
-        if (e.currentTarget.hasAttribute('data-order')) {
-            e.currentTarget.style.boxShadow = '0 2px 5px 0 #454545'
-        }
+        if (e.currentTarget.hasAttribute('data-order')) e.currentTarget.style.backgroundColor = '#ededed'
     }
 
-    const dragLeaveHandler = (e: DragEvent<HTMLDivElement>) => {
-        const parentNode = e.currentTarget.parentNode as HTMLDivElement;
-        if (parentNode && parentNode.childNodes) parentNode.childNodes.forEach(task => {
-            const taskItem = task as HTMLDivElement;
-            if (taskItem && taskItem.style) taskItem.style.boxShadow = '0 0 10px 0 rgba(69, 69, 69, 0.25)'
-        })
-    }
+    const dragLeaveHandler = (e: DragEvent<HTMLDivElement>) => dragLeaveTask(e.currentTarget)
 
     const dragStartHandler = (e: DragEvent<HTMLDivElement>, taskList: ITaskList, task: ITask) => {
-        setCurrentTaskList(taskList)
-        setCurrentTask(task)
+        dispatch(createCurrentTaskList(taskList));
+        dispatch(createCurrentTask(task))
     }
 
-    const dragEndHandler = (e: DragEvent<HTMLDivElement>) => {
-        const parentNode = e.currentTarget.parentNode as HTMLDivElement;
-        if (parentNode && parentNode.childNodes) parentNode.childNodes.forEach(task => {
-            const taskItem = task as HTMLDivElement;
-            if (taskItem && taskItem.style) taskItem.style.boxShadow = '0 0 10px 0 rgba(69, 69, 69, 0.25)'
-        })
+    const dragEndHandler = (e: DragEvent<HTMLDivElement>) => dragLeaveTask(e.currentTarget)
+
+    const deleteCurrentListAndTask = () => {
+        dispatch(deleteCurrTaskList())
+        dispatch(deleteCurrTask())
     }
 
     const dropHandler = (e: DragEvent<HTMLDivElement>, taskList: ITaskList, task: ITask) => {
         e.preventDefault()
-        const parentNode = e.currentTarget.parentNode as HTMLDivElement;
-        let targetIndex = Array.prototype.indexOf.call(parentNode.children, e.target)
-        let draggableTask;
-        if(currentTaskList && currentTask) {
-            draggableTask = structuredClone(currentTask);
-            deleteTaskHandler(currentTaskList.taskListId, currentTask);
+        if (currentTaskList && currentTask) {
+            const currentTarget = structuredClone(task);
+            const targetIndex = currentTarget.order;
+            const draggableTask = structuredClone(currentTask);
+            dispatch(deleteTask(currentTask))
+            dispatch(deleteTask(task))
+            currentTarget.order = draggableTask.order
+            draggableTask.taskListId = taskList.taskListId;
+            draggableTask.order = targetIndex;
+            dispatch(createTask(currentTarget))
+            dispatch(createTask(draggableTask))
+            deleteCurrentListAndTask()
         }
-        setCurrentTask(null);
-        draggableTask.taskListId = taskList.taskListId;
-        draggableTask.order = targetIndex;
-        dispatch(createTask(draggableTask))
-        // setTasks(reIndexTasks(tasks))
     }
 
     const listDropHandler = (e: DragEvent<HTMLDivElement>, taskList: ITaskList) => {
         e.preventDefault()
-        // if (!tasks.filter(t => t.taskListId === taskList.taskListId).length) {
-        //     let draggableTask = Object.assign(currentTask, {})
-        //     deleteTask(currentTaskList.taskListId, currentTask)
-        //     setCurrentTask(null)
-        //     draggableTask.taskListId = taskList.taskListId
-        //     addItem(db, 'trello', 'Tasks', 'tasks', draggableTask).then(res => res)
-        //     setTasks(reIndexTasks(taskList.taskListId, tasks, copyTasks(taskList.taskListId, tasks)))
-        // }
+        if (currentTaskList && currentTask) {
+            if (boardTasks && !boardTasks.filter(el => el.taskListId === taskList.taskListId).length) {
+                let draggableTask = structuredClone(currentTask);
+                draggableTask.taskListId = taskList.taskListId
+                draggableTask.order = 1
+                dispatch(createTask(draggableTask))
+                dispatch(deleteTask(currentTask));
+                deleteCurrentListAndTask();
+            }
+        }
     }
-
 
     function reIndexTasks(currentTasks: ITask[]) {
         let savedTasks: ITask[] = structuredClone(currentTasks);
@@ -101,7 +110,6 @@ const TaskList: FC<ITaskListProps> = ({taskList, currentBoard, boardTasks}) => {
             return task
         })
         savedTasks.forEach(task => dispatch(createTask(task)))
-        //return savedTasks
     }
 
     const deleteTaskHandler = (taskListId: string, task: ITask) => {
@@ -117,6 +125,32 @@ const TaskList: FC<ITaskListProps> = ({taskList, currentBoard, boardTasks}) => {
             boardUrl: task.boardUrl,
             order: tasks.length + 1
         }))
+    }
+
+    const copyTaskList = (taskList: ITaskList) => {
+        const newTaskList: ITaskList = {
+            taskListId: 'taskList' + Date.parse(new Date().toISOString()),
+            taskListName: taskList.taskListName,
+            boardUrl: taskList.boardUrl
+        }
+        dispatch(createTaskList(newTaskList))
+        if (boardTasks && boardTasks.filter(el => el.taskListId === taskList.taskListId).length)
+            boardTasks.filter(el => el.taskListId === taskList.taskListId).map(task => {
+                const newTask: ITask = {
+                    taskId: 'task' + Date.parse(new Date().toISOString()),
+                    taskListId: newTaskList.taskListId,
+                    title: task.title,
+                    order: task.order,
+                    boardUrl: currentBoard.url
+                }
+                dispatch(createTask(newTask))
+            })
+    }
+
+    const deleteTaskListHandler = (taskList: ITaskList) => {
+        if (boardTasks && boardTasks.filter(el => el.taskListId === taskList.taskListId).length)
+            boardTasks.filter(el => el.taskListId === taskList.taskListId).map(task => dispatch(deleteTask(task)))
+        dispatch(deleteTaskList(taskList))
     }
 
     return (
@@ -138,7 +172,7 @@ const TaskList: FC<ITaskListProps> = ({taskList, currentBoard, boardTasks}) => {
                          onDragEnd={(e) => dragEndHandler(e)}
                          onDrop={(e) => dropHandler(e, taskList, task)}
                     >
-                        <p>id: {task.taskId} {task.title} order: {task.order}</p>
+                        <p>{task.title}</p>
                         <div className={styles.taskList__settings}>
                             <div onClick={() => copyTask(taskList.taskListId, task)}>
                                 <CopyIcon classname={styles.taskList__copyIcon} fill={currentBoard.textColor}/>
@@ -164,16 +198,18 @@ const TaskList: FC<ITaskListProps> = ({taskList, currentBoard, boardTasks}) => {
                     + add task
                 </button>
                 <div className={[styles.taskList__settings].join(' ')}>
-                    {/*<CopyIcon fill={copyTaskListIconFill}*/}
-                    {/*          onMouseOver={() => setCopyTaskListIconFill('#2E8B57')}*/}
-                    {/*          onClick={() => props.copyTaskList(props.btl.taskListName)}*/}
-                    {/*          classname={[boardStyles.taskList__icon, commonStyle.mr_10].join(' ')}*/}
-                    {/*          onMouseOut={() => setCopyTaskListIconFill(props.boardSectionStyles.color)}/>*/}
-                    {/*<DeleteIcon fill={deleteTaskListIconFill}*/}
-                    {/*            classname={boardStyles.taskList__icon}*/}
-                    {/*            onClick={() => props.deleteTaskList(props.btl)}*/}
-                    {/*            onMouseOver={() => setDeleteTaskListIconFill('#2E8B57')}*/}
-                    {/*            onMouseOut={() => setDeleteTaskListIconFill(props.boardSectionStyles.color)}/>*/}
+                    <div style={{marginRight: '1rem'}}
+                         onMouseOut={() => setCopyTaskListIconFill(currentBoard.textColor)}
+                         onClick={() => copyTaskList(taskList)}
+                         onMouseOver={() => setCopyTaskListIconFill(currentBoard.background)}>
+                        <CopyIcon fill={copyTaskListIconFill} classname={styles.taskList__icon}/>
+                    </div>
+                    <div onClick={() => deleteTaskListHandler(taskList)}
+                         onMouseOver={() => setDeleteTaskListIconFill(currentBoard.background)}
+                         onMouseOut={() => setDeleteTaskListIconFill(currentBoard.textColor)}
+                    >
+                        <DeleteIcon fill={deleteTaskListIconFill} classname={styles.taskList__icon}/>
+                    </div>
                 </div>
             </div>
         </div>

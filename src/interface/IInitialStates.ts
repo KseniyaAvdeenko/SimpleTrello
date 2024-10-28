@@ -28,3 +28,8 @@ export interface ITaskInitialState extends IInitialStateBase{
     tasks: ITask[]| null;
     task: ITask|null;
 }
+
+export interface IDragDropInitialState{
+    currentTaskList: ITaskList|null;
+    currentTask: ITask|null;
+}

@@ -160,25 +160,37 @@
     width: 43%
 
 
-@media all and (max-device-width: 540px) and (max-device-height: 720px)
+@media all and (max-device-width: 540px)
   .profile
     padding: 4rem 3rem
   .boardBtn,
   .newBoardBtnContainer
     width: 50%
 
+  .profileContainer
+    @include dFlex(column, center, center)
+
+  .newBoardFormContainer
+    left: -10%
+    backdrop-filter: blur(.5rem)
+    width: 120%
+
+
 @media all and (max-device-width: 430px)
   .boardBtn,
   .newBoardBtnContainer
-    width: 63%
+    width: 100%
 
-@media all and (max-device-width: 390px)
-  .boardBtn,
   .newBoardBtnContainer
-    width: 70%
+    margin: 0 0 2rem
 
-@media all and (max-device-width: 375px)
-  .boardBtn,
-  .newBoardBtnContainer
-    width: 75%
-    height: 7.5rem
+  .newBoardButton,
+  .userBoardLink
+    width: 100%
+    margin: 0 0 2rem
+  .newBoardFormContainer
+    left: 3%
+    backdrop-filter: blur(4rem)
+    width: 95%
+
+

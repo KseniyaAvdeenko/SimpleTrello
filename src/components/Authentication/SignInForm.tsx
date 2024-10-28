@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, FormEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, FC, FormEvent, useState} from 'react';
 import styles from '../../assets/styles/Auth.module.sass';
 import {useAppSelector} from "../../hooks/useAppSelector";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
@@ -7,20 +7,15 @@ import OpenedEye from '../../assets/images/eyeOpened.svg';
 import {IAuthCard} from "../../interface/IAuthCard";
 import {encodeToken} from "../../utils/passwordHashing";
 import {signInUser} from "../../store/actions/authAction";
-import {redirect} from "react-router-dom";
 
 const SignInForm: FC<{ authCardAndForms: IAuthCard; setModal: Function}> = ({authCardAndForms, setModal}) => {
     const dispatch = useAppDispatch()
     const [user, setUser] = useState<{ email: string, password: string }>({email: '', password: ''})
-    const {users, error, isAuth} = useAppSelector(state => state.authReducer)
+    const {users, error} = useAppSelector(state => state.authReducer)
     const [passwordWatcher, setPasswordWatcher] = useState<{ type: string; image: string }>({
         type: 'password',
         image: ClosedEye
     })
-    useEffect(() => {
-        if (isAuth) redirect('/profile')
-    }, [isAuth])
-
 
     const onSingInSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()

@@ -7,7 +7,7 @@
   overflow: auto
   padding-top: 4rem
   padding-bottom: 4rem
-
+  font-family: $textFont
 
 .boardButton
   color: $textColor
@@ -28,6 +28,7 @@
   &__items
     @include dFlex(row, flex-start, flex-start)
     width: fit-content
+    //font-family: $textFont
 
   &__settings
     @include dFlex(row, flex-start, center)
@@ -48,8 +49,9 @@
     height: fit-content
     @extend .p_20
     margin: 0 1.2rem
+    font-family: $textFont
     width: 33rem
-    backdrop-filter: blur(20px)
+    backdrop-filter: blur(2rem)
 
     &:hover
       outline: none
@@ -66,7 +68,7 @@
     background-color: #FFFFFF
 
   &__heading
-    font-size: $h4Size
+    font-size: $h5Size
 
   &__button
     @extend .boardButton

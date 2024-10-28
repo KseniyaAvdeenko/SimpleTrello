@@ -28,11 +28,13 @@
     @extend .rounded_30
     @extend .mr_20
 
+
 @media all and (max-device-width: 1920px)
   .header
     @extend .containerPaddings
     padding-top: 2rem
     padding-bottom: 2rem
+
 
 @media all and (max-device-width: 1580px) and (max-device-height: 730px)
   .header
@@ -43,11 +45,13 @@
       font-size: 2rem
       padding: 1rem 3rem
 
+
 @media all and (max-device-width: 1024px) and (max-device-height: 770px)
   .auth
     &__buttonLink
       font-size: 2rem
       padding: 1rem 3rem
+
 
 @media all and (max-device-width: 1024px) and (max-device-height: 600px)
   .auth
@@ -55,15 +59,22 @@
       font-size: 2rem
       padding: 1rem 3rem
 
-@media all and (max-device-width: 540px) and (max-device-height: 720px)
+
+@media all and (max-device-width: 550px)
   .auth
     &__button
       padding: 1rem 3rem
       font-size: $pSize
+
+    &__buttons
+      @include dFlex(column, flex-start, center)
+
+
   .header
     padding: 1rem 3rem
 
-@media all and (max-device-width: 43rem)
+
+@media all and (max-device-width: 430px)
   .header
     padding: 1rem 3rem
 
@@ -74,12 +85,18 @@
       font-size: $pSize
       margin-right: 0
 
-    &__buttons
-      @include dFlex(column, flex-start, flex-end)
-
-
 
 @media all and (max-device-width: 412px)
   .header
     padding: 1rem 3rem
 
+
+@media all and (max-device-width: 390px)
+  .header
+    &__container
+      @include dFlex(column, center, center)
+      & > a
+        margin-bottom: 1rem
+  .auth
+    &__buttons
+      @include dFlex(row, center, center)

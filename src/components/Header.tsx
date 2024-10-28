@@ -14,7 +14,7 @@ const Header: FC<{showAuthModal: Function}> = ({showAuthModal}) => {
 
     const logOut = () =>{
         dispatch(signOut())
-        redirect(' /')
+        redirect('/')
     }
 
     return (
@@ -23,7 +23,7 @@ const Header: FC<{showAuthModal: Function}> = ({showAuthModal}) => {
                 <Link to='/'><img src={Logo} alt="logo"/></Link>
                 {isAuth
                     ? <div className={styles.auth__buttons}>
-                        <Link to="/profile" className={styles.auth__buttonLink}>{currentUser && currentUser.login}</Link>
+                        <Link to="/profile" className={styles.auth__buttonLink} style={{marginRight: '1rem'}}>{currentUser && currentUser.login}</Link>
                         <svg
                             onClick={logOut}
                             onMouseOver={() => setLogOutIcon('#345e37')}

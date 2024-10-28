@@ -80,6 +80,15 @@ $textFont: "Karla", sans-serif
 .containerPaddings
   padding-left: 14%
   padding-right: 14%
+@media all and (max-device-width: 840px)
+  .containerPaddings
+    padding-left: 10%
+    padding-right: 10%
+@media all and (max-device-width: 540px)
+  .containerPaddings
+    padding-left: 3rem
+    padding-right: 3rem
+
 
 .p_20
   padding: 2rem
@@ -138,10 +147,12 @@ $textFont: "Karla", sans-serif
   font-size: $h5Size
   font-weight: 500
 
+
 .commonButton
   @include dFlex(row, center, center)
   @extend .rounded_20
   @extend .transition
+  font-family: $textFont
 
 .commonButtonHover
   outline: none
@@ -154,7 +165,7 @@ $textFont: "Karla", sans-serif
   @extend .commonButton
   @extend .buttonText
   color: $accentColor
-  padding: 15px 40px
+  padding: 1rem 3rem
 
   &:hover
     @include borders($primaryColor)
@@ -167,6 +178,7 @@ $textFont: "Karla", sans-serif
 .commonInputContainer
   @include dFlex(row, center, center)
   @extend .widthFull
+
 
 //-----formContainer
 .commonFormContainer

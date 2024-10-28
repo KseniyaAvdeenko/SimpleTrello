@@ -3,12 +3,14 @@ import authReducer from './reducers/authSlice';
 import boardReducer from './reducers/boardSlice';
 import taskListReducer from './reducers/taskListSlice';
 import taskReducer from './reducers/taskSlice';
+import dragDropSliceReducer from './reducers/dragDropSlice';
 
 export const rootReducer = combineReducers({
     authReducer,
     boardReducer,
     taskListReducer,
-    taskReducer
+    taskReducer,
+    dragDropSliceReducer
 })
 
 export const setupStore = () => {

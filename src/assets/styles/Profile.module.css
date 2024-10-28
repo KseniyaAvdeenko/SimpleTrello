@@ -53,6 +53,18 @@
   padding-right: 14%;
 }
 
+@media all and (max-device-width: 840px) {
+  .containerPaddings, .profile {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media all and (max-device-width: 540px) {
+  .containerPaddings, .profile {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 .p_20, .newBoardFormContainer, .commonFormContainer, .newBoardForm {
   padding: 2rem;
 }
@@ -117,6 +129,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  font-family: "Karla", sans-serif;
 }
 
 .commonButtonHover, .newBoardForm__button__button:hover {
@@ -129,7 +142,7 @@
   border: 0.1rem solid #8FBC8F;
   background-color: transparent;
   color: #8FBC8F;
-  padding: 15px 40px;
+  padding: 1rem 3rem;
 }
 .transparentToGreenBtn:hover, .newBoardButton:hover {
   border: 0.1rem solid #345e37;
@@ -308,7 +321,7 @@
     width: 43%;
   }
 }
-@media all and (max-device-width: 540px) and (max-device-height: 720px) {
+@media all and (max-device-width: 540px) {
   .profile {
     padding: 4rem 3rem;
   }
@@ -316,24 +329,35 @@
   .newBoardBtnContainer {
     width: 50%;
   }
+  .profileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .newBoardFormContainer {
+    left: -10%;
+    backdrop-filter: blur(0.5rem);
+    width: 120%;
+  }
 }
 @media all and (max-device-width: 430px) {
   .boardBtn, .userBoardLink,
   .newBoardBtnContainer {
-    width: 63%;
+    width: 100%;
   }
-}
-@media all and (max-device-width: 390px) {
-  .boardBtn, .userBoardLink,
   .newBoardBtnContainer {
-    width: 70%;
+    margin: 0 0 2rem;
   }
-}
-@media all and (max-device-width: 375px) {
-  .boardBtn, .userBoardLink,
-  .newBoardBtnContainer {
-    width: 75%;
-    height: 7.5rem;
+  .newBoardButton,
+  .userBoardLink {
+    width: 100%;
+    margin: 0 0 2rem;
+  }
+  .newBoardFormContainer {
+    left: 3%;
+    backdrop-filter: blur(4rem);
+    width: 95%;
   }
 }
 

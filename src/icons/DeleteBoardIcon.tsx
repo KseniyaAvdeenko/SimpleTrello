@@ -4,15 +4,19 @@ import {useAppDispatch} from "../hooks/useAppDispatch";
 import {deleteBoard} from "../store/actions/boardAction";
 
 
-const DeleteBoardIcon: FC<{classname: string,  board: IBoard}> = ({classname, board}) => {
-    const dispatch = useAppDispatch();
-    const onClickHandler = (e: MouseEvent<SVGSVGElement>)=>{
+const DeleteBoardIcon: FC<{ classname: string, deleteBoardHandler: Function; board: IBoard }> = ({
+                                                                                                     deleteBoardHandler,
+                                                                                                     classname,
+                                                                                                     board
+                                                                                                 }) => {
+    const onClickHandler = (e: MouseEvent<SVGSVGElement>) => {
         e.preventDefault();
-        dispatch(deleteBoard(board))
+        deleteBoardHandler(board)
     }
 
     return (
-        <svg className={classname} onClick={e=>onClickHandler(e)} width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className={classname} onClick={e => onClickHandler(e)} width="13" height="14" viewBox="0 0 13 14"
+             fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.05" filter="url(#filter0_b_349_197)">
                 <rect width="13" height="14" rx="2" fill="#ffffff"/>
             </g>

@@ -50,24 +50,6 @@ const Board: FC = () => {
                         taskList={taskList}
                         boardTasks={boardTasks}
                     />
-                    // <TaskList btl={btl} tasks={tasks} sortTasks={sortTasks}
-                    //           copyTask={copyTask} taskName={taskName}
-                    //           onSubmitTaskForm={onSubmitTaskForm}
-                    //           deleteTask={deleteTask} key={btl.taskListId}
-                    //           setTaskName={setTaskName}
-                    //           closeTaskForm={closeTaskForm}
-                    //           openTaskForm={openTaskForm}
-                    //           dropHandler={dropHandler}
-                    //           boardSectionStyles={boardSectionStyles}
-                    //           deleteTaskList={deleteTaskList}
-                    //           copyTaskList={copyTaskList}
-                    //           dragOverHandler={dragOverHandler}
-                    //           dragStartHandler={dragStartHandler}
-                    //           dragLeaveHandler={dragLeaveHandler}
-                    //           dragEndHandler={dragEndHandler}
-                    //           listDropHandler={listDropHandler}
-                    // />
-
                 ))
                 }
                 <div className={styles.taskListBtnContainer}>

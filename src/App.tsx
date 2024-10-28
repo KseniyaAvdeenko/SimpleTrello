@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {loadUsers, signedIn} from "./store/actions/authAction";
 import {useAppDispatch} from "./hooks/useAppDispatch";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, redirect, Route, Routes} from "react-router-dom";
 import styles from './App.module.sass';
 import {useAppSelector} from "./hooks/useAppSelector";
 import {loadBoards} from "./store/actions/boardAction";
@@ -35,6 +35,10 @@ function App() {
         dispatch(loadTaskLists())
         dispatch(loadTasks())
     }, [])
+
+    useEffect(() => {
+        isAuth ?redirect('/profile') : redirect('/')
+    }, [isAuth])
 
     useEffect(() => {
         if (currentUser) dispatch(signedIn())

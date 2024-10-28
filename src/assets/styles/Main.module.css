@@ -53,6 +53,18 @@
   padding-right: 14%;
 }
 
+@media all and (max-device-width: 840px) {
+  .containerPaddings, .main {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media all and (max-device-width: 540px) {
+  .containerPaddings, .main {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 .p_20, .commonFormContainer {
   padding: 2rem;
 }
@@ -117,6 +129,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  font-family: "Karla", sans-serif;
 }
 
 .commonButtonHover {
@@ -129,7 +142,7 @@
   border: 0.1rem solid #8FBC8F;
   background-color: transparent;
   color: #8FBC8F;
-  padding: 15px 40px;
+  padding: 1rem 3rem;
 }
 .transparentToGreenBtn:hover {
   border: 0.1rem solid #345e37;
