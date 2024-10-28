@@ -28,7 +28,6 @@
   &__items
     @include dFlex(row, flex-start, flex-start)
     width: fit-content
-    //font-family: $textFont
 
   &__settings
     @include dFlex(row, flex-start, center)
@@ -51,7 +50,7 @@
     margin: 0 1.2rem
     font-family: $textFont
     width: 33rem
-    backdrop-filter: blur(2rem)
+    @include backdropFilterBlur(2rem)
 
     &:hover
       outline: none
@@ -63,7 +62,7 @@
     @extend .commonFormContainer
     height: fit-content
     margin: 0 1.2rem
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.20)
+    @include boxShadow(0 0 10px 0 rgba(0, 0, 0, 0.20))
     width: 330px
     background-color: #FFFFFF
 
@@ -87,6 +86,9 @@
   height: fit-content
 
   &_open
+    display: -webkit-box!important
+    display: -ms-flexbox!important
+    display: -webkit-flex!important
     display: flex!important
     @extend .commonFormContainer
     background-color: $textColor
@@ -115,7 +117,7 @@
     border-radius: 1rem
     height: fit-content
     display: none
-    box-shadow: 0 0 1rem 0 $lightShadow
+    @include boxShadow(0 0 1rem 0 $lightShadow)
     @extend .mt_10
     &_open
       display: block
@@ -129,6 +131,7 @@
     @extend .mt_10
     @include dFlex(row, space-between, center)
     cursor: grab
+
   &__input
     @extend .commonInputText
 

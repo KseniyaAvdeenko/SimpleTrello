@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {loadUsers, signedIn} from "./store/actions/authAction";
 import {useAppDispatch} from "./hooks/useAppDispatch";
-import {BrowserRouter, Navigate, redirect, Route, Routes, useNavigate} from "react-router-dom";
+import {BrowserRouter, Navigate, redirect, Route, Routes, useNavigate, useNavigation} from "react-router-dom";
 import styles from './App.module.sass';
 import {useAppSelector} from "./hooks/useAppSelector";
 import {loadBoards} from "./store/actions/boardAction";
@@ -17,7 +17,6 @@ import Header from "./components/Header";
 import Authentication from "./components/Authentication/Authentication";
 
 function App() {
-    const navigate = useNavigate()
     const {currentUser, isAuth} = useAppSelector(state => state.authReducer)
     const dispatch = useAppDispatch()
 
@@ -36,10 +35,6 @@ function App() {
         dispatch(loadTaskLists())
         dispatch(loadTasks())
     }, [])
-
-    useEffect(() => {
-        isAuth ? navigate('/profile') : navigate('/')
-    }, [isAuth])
 
     useEffect(() => {
         if (currentUser) dispatch(signedIn())

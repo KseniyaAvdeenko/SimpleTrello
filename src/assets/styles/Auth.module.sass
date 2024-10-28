@@ -18,11 +18,11 @@
 
 
 .authModalLightMode
-  backdrop-filter: blur(.3rem)
+  @include backdropFilterBlur(.3rem)
   background: #ffffff00
 
 .authModalDarkMode
-  backdrop-filter: blur(3rem)
+  @include backdropFilterBlur(3rem)
   background: rgba(30, 30, 30, 0.05)
 
 .authContainerLightMode
@@ -32,7 +32,7 @@
   background-color: $textColor
 
 .authContainerDarkMode
-  box-shadow: 0 0 10px 10px $lightShadow
+  @include boxShadow(0 0 10px 10px $lightShadow)
   color: $textColor
   @include borders($primaryColor)
   background-color: $bgColor
@@ -43,7 +43,7 @@
   @extend .widthFull
   @extend .heightFull
   flex-basis: 50%
-  transition: display 2s ease-in-out
+  @extend .transition
 
 .signInCard
   @extend .authCardAndForm
@@ -158,6 +158,9 @@
 
     &__container
       height: 85%
+      -webkit-box-orient: vertical
+      -webkit-box-direction: normal
+      -ms-flex-direction: column
       flex-direction: column
 
   .signInCard
@@ -182,6 +185,9 @@
 
     &__container
       height: 60%
+      -webkit-box-orient: vertical
+      -webkit-box-direction: normal
+      -ms-flex-direction: column
       flex-direction: column
 
   .cards

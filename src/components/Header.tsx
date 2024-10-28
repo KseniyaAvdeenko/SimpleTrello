@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import styles from '../assets/styles/Header.module.sass'
-import {Link, redirect} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Logo from '../assets/images/simpleTrelloLogo.svg'
 import {useAppSelector} from "../hooks/useAppSelector";
 import {useAppDispatch} from "../hooks/useAppDispatch";
@@ -8,13 +8,14 @@ import {signOut} from "../store/actions/authAction";
 
 
 const Header: FC<{showAuthModal: Function}> = ({showAuthModal}) => {
+    const navigate = useNavigate()
     const {isAuth, currentUser} = useAppSelector(state => state.authReducer)
     const [logOutIcon, setLogOutIcon] = useState<string>('#8FBC8F')
     const dispatch = useAppDispatch()
 
     const logOut = () =>{
         dispatch(signOut())
-        redirect('/')
+        navigate('/')
     }
 
     return (

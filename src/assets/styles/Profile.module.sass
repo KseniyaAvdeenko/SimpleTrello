@@ -10,23 +10,24 @@
 .profileContainer
   @extend .widthFull
   @extend .heightFull
-  @include dFlex(row, flex-start, center)
-  flex-wrap: wrap
+  @extend .grid
+  grid-template-columns: repeat(4, 1fr)
+  grid-auto-rows: 10rem
+  gap: 2rem
 
 .boardBtn
   @extend .commonButton
   position: relative
   padding: 1.5rem 4.5rem
-  width: 23%
+  @extend .widthFull
   @extend .buttonText
-  height: 10rem
-  margin: 0 1.2rem 2rem
+  @extend .heightFull
+
 
 .newBoardBtnContainer
   @extend .positionRel
-  width: 23%
-  height: 10rem
-  margin: 0 1.2rem 2rem
+  @extend .widthFull
+  @extend .heightFull
 
 .newBoardButton
   @extend .widthFull
@@ -44,7 +45,7 @@
   border-radius: 1.5rem
   text-decoration: none
   color: #1E1E1E
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.30)
+  @include boxShadow(0 0 10px 0 rgba(0, 0, 0, 0.30))
 
   &__deleteBtn
     position: absolute
@@ -59,26 +60,28 @@
 
 .newBoardFormContainer
   position: absolute
-  top: -12rem
-  left: -6rem
-  backdrop-filter: blur(.4rem)
+  top: -1rem
+  left: 0
+  @include backdropFilterBlur(4rem)
   display: none
-  width: 30rem
+  width: 100%
   height: fit-content
   @extend .p_20
   @extend .rounded_20
   z-index: 3
 
   &_open
-    display: flex!important
+    display: -webkit-box!important
+    display: -ms-flexbox!important
+    display: -webkit-flex!important
+    display: flex !important
     @include dFlex(column, center, center)
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2)
+    @include boxShadow(0 0 1rem 0 rgba(0, 0, 0, .2))
 
 .newBoardForm
   @extend .widthFull
   @extend .heightFull
   @extend .commonFormContainer
-  //@include borders($accentColor)
 
   & .inputContainer
     @include dFlex(row, space-between, center)
@@ -90,6 +93,7 @@
   & .inputContainer__items
     @include dFlex(column, center, center)
     @extend .widthFull
+
     & > p
       color: $bgColor
 
@@ -128,52 +132,46 @@
 .closeBtnContainer
   @include dFlex(row, flex-end, center)
   @extend .widthFull
+
   &__btn
     cursor: pointer
+
     &:hover path
       stroke: $primaryColor
 
-@media all and (max-device-width: 1280px) and (max-device-height: 880px)
-  .boardBtn,
-  .newBoardBtnContainer
-    width: 25%
-    height: 8.5rem
+@media all and (max-device-width: 1370px)
+  .newBoardFormContainer
+    width: 130%
+    left: -10%
+@media all and (max-device-width: 1280px)
+  .profileContainer
+    grid-template-columns: repeat(3, 1fr)
+    grid-auto-rows: 8.5rem
 
-@media all and (max-device-width: 1024px) and (max-device-height: 770px)
-  .boardBtn,
-  .newBoardBtnContainer
-    width: 30%
+  .newBoardFormContainer
+    width: 110%
+    left: -10%
 
-@media all and (max-device-width: 1024px) and (max-device-height: 600px)
-  .boardBtn,
-  .newBoardBtnContainer
-    width: 33%
+@media all and (max-device-width: 1024px)
+  .newBoardFormContainer
+    width: 130%
+    left: -10%
 
-@media all and (max-device-width: 1024px) and (orientation: portrait)
-  .boardBtn,
-  .newBoardBtnContainer
-    width: 33%
-
-@media all and (max-device-width: 768px) and (orientation: portrait)
-  .boardBtn,
-  .newBoardBtnContainer
-    width: 43%
+@media all and (max-device-width: 840px)
+  .profileContainer
+    grid-template-columns: repeat(2, 1fr)
 
 
+  .newBoardFormContainer
+    left: 0
+    width: 100%
 @media all and (max-device-width: 540px)
   .profile
     padding: 4rem 3rem
-  .boardBtn,
-  .newBoardBtnContainer
-    width: 50%
+
 
   .profileContainer
-    @include dFlex(column, center, center)
-
-  .newBoardFormContainer
-    left: -10%
-    backdrop-filter: blur(.5rem)
-    width: 120%
+    grid-template-columns: repeat(1, 1fr)
 
 
 @media all and (max-device-width: 430px)
@@ -188,9 +186,8 @@
   .userBoardLink
     width: 100%
     margin: 0 0 2rem
+
+
+@media all and (max-device-width: 320px)
   .newBoardFormContainer
-    left: 3%
-    backdrop-filter: blur(4rem)
-    width: 95%
-
-
+    top: -10rem

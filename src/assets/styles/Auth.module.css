@@ -101,7 +101,8 @@
   position: relative;
 }
 
-.transition, .commonButton, .cards__button, .transparentToGreenBtn, .commonInputText, .cards__input {
+.transition, .authCardAndForm, .signUpForm, .signUpCard, .signInForm, .signInCard, .commonButton, .cards__button, .transparentToGreenBtn, .commonInputText, .cards__input {
+  -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
 }
 
@@ -125,9 +126,19 @@
 }
 
 .commonButton, .cards__button, .transparentToGreenBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   font-family: "Karla", sans-serif;
 }
@@ -152,20 +163,41 @@
 }
 
 .commonInputContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .commonFormContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .grid {
+  display: -ms-grid;
   display: grid;
 }
 
@@ -173,25 +205,47 @@
   position: absolute;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .auth__container {
   height: 53%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: flex-start;
+  -ms-flex-pack: flex-start;
   justify-content: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
   align-items: flex-start;
 }
 
 .authModalLightMode {
+  -webkit-backdrop-filter: blur(0.3rem);
   backdrop-filter: blur(0.3rem);
   background: rgba(255, 255, 255, 0);
 }
 
 .authModalDarkMode {
+  -webkit-backdrop-filter: blur(3rem);
   backdrop-filter: blur(3rem);
   background: rgba(30, 30, 30, 0.05);
 }
@@ -204,6 +258,7 @@
 }
 
 .authContainerDarkMode {
+  -webkit-box-shadow: 0 0 10px 10px rgba(69, 69, 69, 0.25);
   box-shadow: 0 0 10px 10px rgba(69, 69, 69, 0.25);
   color: #FFFFFF;
   border: 0.1rem solid #345e37;
@@ -212,12 +267,21 @@
 
 .authCardAndForm, .signUpForm, .signUpCard, .signInForm, .signInCard {
   background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   flex-basis: 50%;
-  transition: display 2s ease-in-out;
 }
 
 .signInCard {
@@ -236,16 +300,36 @@
   background-color: #345e37;
 }
 .cards__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 65%;
 }
 .cards__inputContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: flex-start;
+  -ms-flex-pack: flex-start;
   justify-content: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
   align-items: flex-start;
   margin-bottom: 1rem;
 }
@@ -318,6 +402,9 @@
   }
   .auth__container {
     height: 85%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   .signInCard {
@@ -342,6 +429,9 @@
   }
   .auth__container {
     height: 60%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   .cards__button {

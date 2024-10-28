@@ -1,9 +1,9 @@
-$primaryColor:#345e37
+$primaryColor: #345e37
 $textColor: #FFFFFF
-$accentColor:#8FBC8F
+$accentColor: #8FBC8F
 $hoverColor: #2E8B57
 $bgColor: #1E1E1E
-$darkShadow:#454545
+$darkShadow: #454545
 $lightShadow: rgba(69, 69, 69, 0.25)
 $h1Size: 6.1rem
 $h2Size: 4.9rem
@@ -15,7 +15,6 @@ $smallSize: 1.2rem
 $xxsSize: 1rem
 $titleFont: "Work Sans", sans-serif
 $textFont: "Karla", sans-serif
-
 
 
 .h1
@@ -38,19 +37,42 @@ $textFont: "Karla", sans-serif
   text-align: center
 
 
-
 //--------flex----------
 @mixin dFlex($direction, $jc, $ai)
+  display: -webkit-box
+  display: -ms-flexbox
+  display: -webkit-flex
   display: flex
-  flex-direction: $direction
+  @if $direction == row
+    -webkit-box-orient: horizontal
+    -webkit-box-direction: normal
+    -ms-flex-direction: row
+    flex-direction: row
+  @if $direction == column
+    -webkit-box-orient: vertical
+    -webkit-box-direction: normal
+    -ms-flex-direction: column
+    flex-direction: column
+  -webkit-box-pack: $jc
+  -ms-flex-pack: $jc
   justify-content: $jc
+  -webkit-box-align: $ai
+  -ms-flex-align: $ai
   align-items: $ai
+
 
 
 //border
 @mixin borders($color)
   border: .1rem solid $color
-
+//boxShadow
+@mixin boxShadow($value)
+  -webkit-box-shadow: $value
+  box-shadow: $value
+//backdrop-filter
+@mixin backdropFilterBlur($value)
+  -webkit-backdrop-filter: blur($value)
+  backdrop-filter: blur($value)
 
 //--------margins and paddings
 //--margins
@@ -80,10 +102,12 @@ $textFont: "Karla", sans-serif
 .containerPaddings
   padding-left: 14%
   padding-right: 14%
+
 @media all and (max-device-width: 840px)
   .containerPaddings
     padding-left: 10%
     padding-right: 10%
+
 @media all and (max-device-width: 540px)
   .containerPaddings
     padding-left: 3rem
@@ -108,8 +132,10 @@ $textFont: "Karla", sans-serif
 //-----border-radius
 .rounded_10
   border-radius: 1rem
+
 .rounded_15
   border-radius: 1.5rem
+
 .rounded_20
   border-radius: 2rem
 
@@ -123,6 +149,7 @@ $textFont: "Karla", sans-serif
 
 //-----transition-----
 .transition
+  -webkit-transition: all 0.5s ease-in
   transition: all 0.5s ease-in
 
 //----------inputs------
@@ -187,4 +214,5 @@ $textFont: "Karla", sans-serif
   @include dFlex(column, center, center)
 
 .grid
+  display: -ms-grid
   display: grid

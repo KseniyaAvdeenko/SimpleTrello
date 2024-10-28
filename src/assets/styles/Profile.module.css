@@ -73,11 +73,11 @@
   padding: 3rem;
 }
 
-.widthFull, .closeBtnContainer, .newBoardForm .inputContainer__items, .newBoardForm, .newBoardButton, .profileContainer, .profile, .commonInputContainer, .newBoardForm .inputContainer__colors, .commonInputText, .newBoardForm .inputContainer > input[type=text] {
+.widthFull, .closeBtnContainer, .newBoardForm .inputContainer__items, .newBoardForm, .newBoardButton, .newBoardBtnContainer, .boardBtn, .userBoardLink, .profileContainer, .profile, .commonInputContainer, .newBoardForm .inputContainer__colors, .commonInputText, .newBoardForm .inputContainer > input[type=text] {
   width: 100%;
 }
 
-.heightFull, .newBoardForm, .newBoardButton, .profileContainer {
+.heightFull, .newBoardForm, .newBoardButton, .newBoardBtnContainer, .boardBtn, .userBoardLink, .profileContainer {
   height: 100%;
 }
 
@@ -102,6 +102,7 @@
 }
 
 .transition, .newBoardForm__button, .commonButton, .boardBtn, .userBoardLink, .transparentToGreenBtn, .newBoardButton, .commonInputText, .newBoardForm .inputContainer > input[type=text] {
+  -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
 }
 
@@ -125,9 +126,19 @@
 }
 
 .commonButton, .boardBtn, .userBoardLink, .transparentToGreenBtn, .newBoardButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   font-family: "Karla", sans-serif;
 }
@@ -152,52 +163,72 @@
 }
 
 .commonInputContainer, .newBoardForm .inputContainer__colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .commonFormContainer, .newBoardForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
-.grid {
+.grid, .profileContainer {
+  display: -ms-grid;
   display: grid;
 }
 
 .profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: flex-start;
+  -ms-flex-pack: flex-start;
   justify-content: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
   align-items: flex-start;
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
 
 .profileContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 10rem;
+  gap: 2rem;
 }
 
 .boardBtn, .userBoardLink {
   position: relative;
   padding: 1.5rem 4.5rem;
-  width: 23%;
-  height: 10rem;
-  margin: 0 1.2rem 2rem;
-}
-
-.newBoardBtnContainer {
-  width: 23%;
-  height: 10rem;
-  margin: 0 1.2rem 2rem;
 }
 
 .newBoardButton {
@@ -207,6 +238,7 @@
   border-radius: 1.5rem;
   text-decoration: none;
   color: #1E1E1E;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 .userBoardLink__deleteBtn {
@@ -222,33 +254,68 @@
 
 .newBoardFormContainer {
   position: absolute;
-  top: -12rem;
-  left: -6rem;
-  backdrop-filter: blur(0.4rem);
+  top: -1rem;
+  left: 0;
+  -webkit-backdrop-filter: blur(4rem);
+  backdrop-filter: blur(4rem);
   display: none;
-  width: 30rem;
+  width: 100%;
   height: fit-content;
   z-index: 3;
 }
 .newBoardFormContainer_open {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important;
   display: flex !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .newBoardForm .inputContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: space-between;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .newBoardForm .inputContainer__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .newBoardForm .inputContainer__items > p {
@@ -278,9 +345,19 @@
 }
 
 .closeBtnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: flex-end;
+  -ms-flex-pack: flex-end;
   justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .closeBtnContainer__btn {
@@ -290,55 +367,43 @@
   stroke: #345e37;
 }
 
-@media all and (max-device-width: 1280px) and (max-device-height: 880px) {
-  .boardBtn, .userBoardLink,
-  .newBoardBtnContainer {
-    width: 25%;
-    height: 8.5rem;
+@media all and (max-device-width: 1370px) {
+  .newBoardFormContainer {
+    width: 130%;
+    left: -10%;
   }
 }
-@media all and (max-device-width: 1024px) and (max-device-height: 770px) {
-  .boardBtn, .userBoardLink,
-  .newBoardBtnContainer {
-    width: 30%;
+@media all and (max-device-width: 1280px) {
+  .profileContainer {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 8.5rem;
+  }
+  .newBoardFormContainer {
+    width: 110%;
+    left: -10%;
   }
 }
-@media all and (max-device-width: 1024px) and (max-device-height: 600px) {
-  .boardBtn, .userBoardLink,
-  .newBoardBtnContainer {
-    width: 33%;
+@media all and (max-device-width: 1024px) {
+  .newBoardFormContainer {
+    width: 130%;
+    left: -10%;
   }
 }
-@media all and (max-device-width: 1024px) and (orientation: portrait) {
-  .boardBtn, .userBoardLink,
-  .newBoardBtnContainer {
-    width: 33%;
+@media all and (max-device-width: 840px) {
+  .profileContainer {
+    grid-template-columns: repeat(2, 1fr);
   }
-}
-@media all and (max-device-width: 768px) and (orientation: portrait) {
-  .boardBtn, .userBoardLink,
-  .newBoardBtnContainer {
-    width: 43%;
+  .newBoardFormContainer {
+    left: 0;
+    width: 100%;
   }
 }
 @media all and (max-device-width: 540px) {
   .profile {
     padding: 4rem 3rem;
   }
-  .boardBtn, .userBoardLink,
-  .newBoardBtnContainer {
-    width: 50%;
-  }
   .profileContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .newBoardFormContainer {
-    left: -10%;
-    backdrop-filter: blur(0.5rem);
-    width: 120%;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media all and (max-device-width: 430px) {
@@ -354,10 +419,10 @@
     width: 100%;
     margin: 0 0 2rem;
   }
+}
+@media all and (max-device-width: 320px) {
   .newBoardFormContainer {
-    left: 3%;
-    backdrop-filter: blur(4rem);
-    width: 95%;
+    top: -10rem;
   }
 }
 
