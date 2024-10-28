@@ -18,10 +18,3 @@ export const db = getFirestore(app);
 export default app;
 
 
-//delete array from an array
-export async function deleteItem(db: any, mainCollection: string, document: string, key: string, item: any) {
-    await updateDoc(doc(db, mainCollection, document), {
-        [key]: arrayRemove(item)
-    });
-}
-
