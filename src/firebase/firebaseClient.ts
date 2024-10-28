@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, doc, updateDoc, arrayUnion, arrayRemove, collection, getDocs,  } from "firebase/firestore";
+import {initializeApp} from "firebase/app";
+import {getFirestore,} from "firebase/firestore";
 
 
 export const firebaseConfig = {
