@@ -37,7 +37,7 @@ const Header: FC<{showAuthModal: Function}> = ({showAuthModal}) => {
                         </svg>
                     </div>
                     : <div className={styles.auth__buttons}>
-                        <button className={styles.auth__buttonLink} onClick={()=>showAuthModal('signIn')}>Sing in</button>
+                        <button className={styles.auth__buttonLink} onClick={()=>showAuthModal('signIn')}>Sign in</button>
                         <button className={styles.auth__button} onClick={()=>showAuthModal('signUp')}>Sign up</button>
                     </div>
                 }

@@ -37,7 +37,7 @@ const Board: FC = () => {
         getCurrentBoard(boards, url);
         getBoardTaskLists(taskLists, url);
         getBoardTasks(tasks, url)
-    }, [boards, taskLists, tasks])
+    }, [url, boards, taskLists, tasks])
 
     return currentBoard ? (
         <section className={styles.boardSection}

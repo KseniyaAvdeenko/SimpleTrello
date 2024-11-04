@@ -7,7 +7,7 @@ const Main: FC = () => {
     return (
         <main className={styles.main}>
             <div className={styles.main__imageWrapper}>
-                <img className={styles.main__img} src={MainImg} alt="image"/>
+                <img className={styles.main__img} src={MainImg} alt="main"/>
             </div>
             <h1 className={styles.main__heading}>Master the chaos</h1>
             <h4 className={styles.main__subheading}>get inspired, create, explore</h4>

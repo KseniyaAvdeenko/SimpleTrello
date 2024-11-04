@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import {ITask} from "../interface/ITasks";
 
 
 interface ICopyIconProps{
